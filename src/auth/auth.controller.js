@@ -88,9 +88,7 @@ const createAdmin = async ( name, surname, username, email, password, role ) => 
         if (role === "APP_ADMIN") {
             const existAdmin = await User.findOne({ role: "APP_ADMIN" });
             if (existAdmin) {
-                console.log("--------------------------- Error -------------------------------")
                 console.log("A user with admin role already exists. Another cannot be created.");
-                console.log("-----------------------------------------------------------------")
                 return null;
             };
         };
