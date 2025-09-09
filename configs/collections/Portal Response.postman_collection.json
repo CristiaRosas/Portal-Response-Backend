@@ -1,0 +1,861 @@
+{
+	"info": {
+		"_postman_id": "6942c089-01fe-4fe6-9eca-04b5fb15b394",
+		"name": "Portal Response",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48031352"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Mostrar Usuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMwNGIxN2NjYTY5NDA5NmYzZjgiLCJpYXQiOjE3NTc0NDExMDYsImV4cCI6MTc1NzQ1OTEwNn0.FTKj-fPYoGkMvDenBOK9kRztfOxreRrzdltFcuAjBGQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/usersView",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"users",
+								"usersView"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMTYyOGE1MDU4MzNiYjViYWMxM2IiLCJpYXQiOjE3NTczNTU0MzUsImV4cCI6MTc1NzM3MzQzNX0.O7BfXFIpfKJ6s17eYvGmPyTz8cFcxXKw-8dsbRfzk2c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/userDelete/68bf19c21f65720ddee5bca8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"users",
+								"userDelete",
+								"68bf19c21f65720ddee5bca8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQ1NzNjNTM2NzlhYmUyN2E0MjQiLCJpYXQiOjE3NTczNTcyMDksImV4cCI6MTc1NzM3NTIwOX0.SC01hobsPZx15i4vLY4hg2CJ3JuZke9WyTIq3AWIPcA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Juan Carlos\",\r\n  \"surname\": \"Pérez López\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"users",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Contraseña",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQ1NzNjNTM2NzlhYmUyN2E0MjQiLCJpYXQiOjE3NTczNTc5NzAsImV4cCI6MTc1NzM3NTk3MH0.tOItRohomD9cFkMBAWESXxo5IIIGwpgICHmb_5DemSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"passwordOld\": \"12345678\",\r\n  \"passwordNew\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/passwordUpdate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"users",
+								"passwordUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambio de Rol",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQyZTNjNTM2NzlhYmUyN2E0MWYiLCJpYXQiOjE3NTc0NDAwNjcsImV4cCI6MTc1NzQ1ODA2N30.b2lXdkib-aBHJFayVuTDV7JIppVqihtN4eNunybltDc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"role\": \"NORMAL_ROLE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/updateRole/68bf44b83c53679abe27a43d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"users",
+								"updateRole",
+								"68bf44b83c53679abe27a43d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"crosas@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Hector\",\r\n  \"surname\": \"mauricio\",\r\n  \"username\": \"hcordero\",\r\n  \"email\": \"hcordero@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Normal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQ1NzNjNTM2NzlhYmUyN2E0MjQiLCJpYXQiOjE3NTczNTcyMDksImV4cCI6MTc1NzM3NTIwOX0.SC01hobsPZx15i4vLY4hg2CJ3JuZke9WyTIq3AWIPcA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"corozco@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Agregar Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"desmaquillante\",\r\n  \"descripcion\": \"especial para pieles delicadas\",\r\n  \"precio\": 12.50,\r\n  \"stock\": 10,\r\n  \"categoriaNombre\": \"maquillaje\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mis productos / solo proveedores",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/mis-productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"mis-productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtro categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/categoria/cuidado facial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"categoria",
+								"cuidado facial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/buscar/68c073e36e2b4afda2f07b0c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"buscar",
+								"68c073e36e2b4afda2f07b0c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filtro por proveedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/proveedor/Billares Chapinlandia premium",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"proveedor",
+								"Billares Chapinlandia premium"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditarProducto solo proveedor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Shampo tio nacho\",\r\n  \"precio\": 17.50,\r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"cuidado facial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68c073e36e2b4afda2f07b0c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"editar",
+								"68c073e36e2b4afda2f07b0c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar producto por nombre / solo proveedores",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDQwODgsImV4cCI6MTc1NzQ2MjA4OH0.jQqdMKUlslTI6no9xU3jq2yFP4k3GyRivQK-0KdhluM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreProducto\": \"desmaquillante\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Agregar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"maquillaje\",\r\n  \"descripcion\": \"productos de belleza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/id/68c0569fb98141892a65183f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias",
+								"id",
+								"68c0569fb98141892a65183f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Por Nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/nombre/tecnologia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias",
+								"nombre",
+								"tecnologia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Categoria por Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"prueba de eliminacion editada\",\r\n  \"descripcion\": \"prueba de eliminacion editada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68c05a5566adfa21e7cc4abd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias",
+								"68c05a5566adfa21e7cc4abd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68c05a5566adfa21e7cc4abd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"categorias",
+								"68c05a5566adfa21e7cc4abd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Proveedores",
+			"item": [
+				{
+					"name": "Agregar Proveedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Distelsa Guatemala\",\r\n  \"contacto\": \"pedro armas\",\r\n  \"email\": \"distelsa@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Proveedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busar Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar/68bf527145ae9226adf6da3c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"buscar",
+								"68bf527145ae9226adf6da3c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Proveedor",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Listar por nombre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar-nombre/Billares Chapinlandia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"buscar-nombre",
+								"Billares Chapinlandia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Proveedor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Billares Chapinlandia Premium\",\r\n  \"contacto\": \"Adalberto Corozco - +50236995274\",\r\n  \"categoriasNombres\": [\"cuidado corporal\", \"cuidado facial\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/editar/68c06cfcb17cca694096f41c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"editar",
+								"68c06cfcb17cca694096f41c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar Categoria",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedidos",
+			"item": []
+		}
+	]
+}

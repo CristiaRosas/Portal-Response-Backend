@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "68c073e36e2b4afda2f07b0c"
+  },
+  "nombre": "Shampo tio nacho",
+  "descripcion": "shampo de la mehor calidad",
+  "precio": 17.5,
+  "stock": 25,
+  "categoria": {
+    "$oid": "68c06cd1b17cca694096f413"
+  },
+  "proveedor": {
+    "$oid": "68c06cfcb17cca694096f41c"
+  },
+  "createdAt": {
+    "$date": "2025-09-09T18:37:23.491Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:50:18.743Z"
+  }
+}]

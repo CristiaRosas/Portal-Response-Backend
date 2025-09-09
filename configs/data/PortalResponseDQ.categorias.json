@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "68c06cc8b17cca694096f411"
+  },
+  "nombre": "cuidado corporal",
+  "descripcion": "productos para el cuidado corporal",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:07:04.437Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:07:04.437Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c06cd1b17cca694096f413"
+  },
+  "nombre": "cuidado facial",
+  "descripcion": "productos para el cuidado facial",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:07:13.298Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:07:13.298Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c06cdbb17cca694096f415"
+  },
+  "nombre": "cuidado capilar",
+  "descripcion": "productos para el cuidado capilar",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:07:23.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:07:23.166Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c06d38b17cca694096f421"
+  },
+  "nombre": "Electrónicos",
+  "descripcion": "productos Electrónicos",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:08:56.526Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:08:56.526Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c070495e5bf7b258ba756a"
+  },
+  "nombre": "maquillaje",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:22:01.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:22:01.178Z"
+  }
+}]

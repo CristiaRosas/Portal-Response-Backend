@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "68c06c04b17cca694096f3f8"
+  },
+  "name": "Cristian",
+  "surname": "Rene",
+  "username": "Rosas",
+  "email": "crosas@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$wwBTiNlWky6eHhvy8PZNnw$HjqDPr+AkkQW7BlMVuTiNsTm0mfIVrBeDQQK/rDTdvE",
+  "bookingHistory": [],
+  "role": "APP_ADMIN",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:03:48.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:03:48.094Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c06c13b17cca694096f400"
+  },
+  "name": "Adlberto",
+  "surname": "Orozco",
+  "username": "corozco",
+  "email": "corozco@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$W3a23CXRttcpaQ+MxiX8qg$84841qWCv6pEqBScgEh1A2c88KIfhbARTXh9XgcKqsc",
+  "bookingHistory": [],
+  "role": "NORMAL_ROLE",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:04:03.633Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:04:03.633Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c06c26b17cca694096f405"
+  },
+  "name": "Hector",
+  "surname": "mauricio",
+  "username": "hcordero",
+  "email": "hcordero@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$yu9uc7QJ6y5oaaTMPn4YkQ$L32ZyZuVIxpwRg0ZbuEKHYn/KyKOqU31NT1U55/nfcM",
+  "bookingHistory": [],
+  "role": "NORMAL_ROLE",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-09-09T18:04:22.583Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-09T18:04:22.583Z"
+  }
+}]
