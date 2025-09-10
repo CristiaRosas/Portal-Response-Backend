@@ -59,4 +59,34 @@
   "updatedAt": {
     "$date": "2025-09-09T18:09:36.254Z"
   }
+},
+{
+  "_id": {
+    "$oid": "68c19abebf02c3088a170f56"
+  },
+  "nombre": "lunaTec",
+  "contacto": "luna - +50236995236",
+  "usuario": {
+    "$oid": "68c19820bf02c3088a170f4b"
+  },
+  "categorias": [
+    {
+      "$oid": "68c06d38b17cca694096f421"
+    }
+  ],
+  "productos": [
+    {
+      "$oid": "68c19af8bf02c3088a170f62"
+    },
+    {
+      "$oid": "68c19b43bf02c3088a170f73"
+    }
+  ],
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-10T15:35:26.865Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T15:37:39.634Z"
+  }
 }]

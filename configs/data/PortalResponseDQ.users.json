@@ -1,20 +1,20 @@
 [{
   "_id": {
-    "$oid": "68c06c04b17cca694096f3f8"
+    "$oid": "68c18e4c2f309581670e5733"
   },
   "name": "Cristian",
   "surname": "Rene",
   "username": "Rosas",
   "email": "crosas@gmail.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$wwBTiNlWky6eHhvy8PZNnw$HjqDPr+AkkQW7BlMVuTiNsTm0mfIVrBeDQQK/rDTdvE",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$mo++2tXnfNquynxMJdVXog$IJKARXKRjhlgOxU49WbvGF8bzY17Vgzmv16GUADePn4",
   "bookingHistory": [],
   "role": "APP_ADMIN",
   "state": true,
   "createdAt": {
-    "$date": "2025-09-09T18:03:48.094Z"
+    "$date": "2025-09-10T14:42:20.514Z"
   },
   "updatedAt": {
-    "$date": "2025-09-09T18:03:48.094Z"
+    "$date": "2025-09-10T14:42:20.514Z"
   }
 },
 {
@@ -53,5 +53,43 @@
   },
   "updatedAt": {
     "$date": "2025-09-09T18:04:22.583Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c19820bf02c3088a170f4b"
+  },
+  "name": "Cristian",
+  "surname": "luna",
+  "username": "cluna",
+  "email": "cluna@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$4hCOcYcDjEbxp1NkF9uVlA$wRjehHJ0MMy563SlaLG33CFt1T6HEFWhBcddfTqcO+A",
+  "bookingHistory": [],
+  "role": "NORMAL_ROLE",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-09-10T15:24:16.810Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T15:24:16.810Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c19f48beec50180d017d33"
+  },
+  "name": "comprador",
+  "surname": "prueba",
+  "username": "pcompra",
+  "email": "prompra@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$zM7zgZShYajgFcicV93QMg$IMw+dQ1wLd2zyLyxQcRwdMg+UNQn/RThJwvGKJ9RytE",
+  "bookingHistory": [],
+  "role": "NORMAL_ROLE",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-09-10T15:54:48.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T15:54:48.832Z"
   }
 }]

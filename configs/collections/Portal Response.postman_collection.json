@@ -19,7 +19,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMwNGIxN2NjYTY5NDA5NmYzZjgiLCJpYXQiOjE3NTc0NDExMDYsImV4cCI6MTc1NzQ1OTEwNn0.FTKj-fPYoGkMvDenBOK9kRztfOxreRrzdltFcuAjBGQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOGU0YzJmMzA5NTgxNjcwZTU3MzMiLCJpYXQiOjE3NTc1MTc4MTcsImV4cCI6MTc1NzUzNTgxN30.fcsn0jA_bZOTp738hPjTJvvQitnnJm0w9rjJdF7O0rQ",
 								"type": "text"
 							}
 						],
@@ -279,7 +279,38 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"corozco@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n  \"email\": \"prompra@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login proveedores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"cluna@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -315,13 +346,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MTg1NzAsImV4cCI6MTc1NzUzNjU3MH0.Kv_9GctpZcDtgChpYmHaatwEi0-QitUtvyBE1H966qI",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"desmaquillante\",\r\n  \"descripcion\": \"especial para pieles delicadas\",\r\n  \"precio\": 12.50,\r\n  \"stock\": 10,\r\n  \"categoriaNombre\": \"maquillaje\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"monitor gamer\",\r\n  \"descripcion\": \"gran calidad y resolucion\",\r\n  \"precio\": 1300.00,\r\n  \"stock\": 10,\r\n  \"categoriaNombre\": \"Electrónicos\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -374,7 +405,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MTg1NzAsImV4cCI6MTc1NzUzNjU3MH0.Kv_9GctpZcDtgChpYmHaatwEi0-QitUtvyBE1H966qI",
 								"type": "text"
 							}
 						],
@@ -711,7 +742,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Distelsa Guatemala\",\r\n  \"contacto\": \"pedro armas\",\r\n  \"email\": \"distelsa@gmail.com\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"lunaTec\",\r\n  \"contacto\": \"luna - +50236995236\",\r\n  \"userEmail\": \"cluna@gmail.com\",\r\n  \"categoriasNombres\": [\"Electrónicos\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -763,6 +794,38 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar/68c06cfcb17cca694096f41c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"buscar",
+								"68c06cfcb17cca694096f41c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Proveedor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
 							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar/68bf527145ae9226adf6da3c",
 							"protocol": "http",
 							"host": [
@@ -777,14 +840,6 @@
 								"68bf527145ae9226adf6da3c"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Editar Proveedor",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				},
@@ -846,8 +901,31 @@
 				{
 					"name": "Asignar Categoria",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"proveedorNombre\": \"Billares Chapinlandia premium\",\r\n  \"categoriaNombre\": \"maquillaje\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/asignar-categoria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"proveedores",
+								"asignar-categoria"
+							]
+						}
 					},
 					"response": []
 				}
@@ -855,7 +933,171 @@
 		},
 		{
 			"name": "Pedidos",
-			"item": []
+			"item": [
+				{
+					"name": "Crear Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOWY0OGJlZWM1MDE4MGQwMTdkMzMiLCJpYXQiOjE3NTc1MTk3NTQsImV4cCI6MTc1NzUzNzc1NH0.FoYq4laIR_BvKPwXgYrEVVtHvB0XdVDao1RNTjxYHYw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productos\": [\r\n    {\r\n      \"nombre\": \"monitor gamer\",\r\n      \"cantidad\": 1\r\n    },\r\n    {\r\n      \"nombre\": \"mouse gamer\",\r\n      \"cantidad\": 1\r\n    }\r\n  ],\r\n  \"direccionEntrega\": \"edificio ilumina\",\r\n  \"telefonoContacto\": \"+502 56340802\",\r\n  \"observaciones\": \"Por favor entregar antes de las 5pm\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/crear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener mis pedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOWY0OGJlZWM1MDE4MGQwMTdkMzMiLCJpYXQiOjE3NTc1MTk3NTQsImV4cCI6MTc1NzUzNzc1NH0.FoYq4laIR_BvKPwXgYrEVVtHvB0XdVDao1RNTjxYHYw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/mis-pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"mis-pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener mis pedidos / proveedor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MjAxODksImV4cCI6MTc1NzUzODE4OX0.Rr_puMY9JwCJtQLokY9FRJ5AbziJrHwp8itcVHde3nc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/proveedor/mis-pedidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"proveedor",
+								"mis-pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar estado producto / proveedor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MjAxODksImV4cCI6MTc1NzUzODE4OX0.Rr_puMY9JwCJtQLokY9FRJ5AbziJrHwp8itcVHde3nc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estado\": \"confirmado\",\r\n  \"observaciones\": \"Producto confirmado, en preparación\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/proveedor/actualizar-estado/68c1a044beec50180d017d46/monitor gamer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"proveedor",
+								"actualizar-estado",
+								"68c1a044beec50180d017d46",
+								"monitor gamer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ver todos los pedidos / solo admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOGU0YzJmMzA5NTgxNjcwZTU3MzMiLCJpYXQiOjE3NTc1MjA3NjYsImV4cCI6MTc1NzUzODc2Nn0.PFEAajKLHZvaDTsKtVjeRwxxhuMFbOflwjqCuPvqBAY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"admin",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

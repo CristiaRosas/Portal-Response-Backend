@@ -1,0 +1,83 @@
+[{
+  "_id": {
+    "$oid": "68c1a044beec50180d017d46"
+  },
+  "usuario": {
+    "$oid": "68c19f48beec50180d017d33"
+  },
+  "productos": [
+    {
+      "producto": {
+        "$oid": "68c19b43bf02c3088a170f73"
+      },
+      "cantidad": 1,
+      "precioUnitario": 1300,
+      "proveedor": {
+        "$oid": "68c19abebf02c3088a170f56"
+      },
+      "estado": "confirmado",
+      "_id": {
+        "$oid": "68c1a044beec50180d017d47"
+      },
+      "fechaActualizacion": {
+        "$date": "2025-09-10T16:10:33.610Z"
+      }
+    },
+    {
+      "producto": {
+        "$oid": "68c19af8bf02c3088a170f62"
+      },
+      "cantidad": 1,
+      "precioUnitario": 180,
+      "proveedor": {
+        "$oid": "68c19abebf02c3088a170f56"
+      },
+      "estado": "pendiente",
+      "_id": {
+        "$oid": "68c1a044beec50180d017d48"
+      },
+      "fechaActualizacion": {
+        "$date": "2025-09-10T15:59:00.638Z"
+      }
+    }
+  ],
+  "estadoGeneral": "parcial",
+  "total": 1480,
+  "direccionEntrega": "edificio ilumina",
+  "telefonoContacto": "+502 56340802",
+  "observaciones": "Por favor entregar antes de las 5pm",
+  "historialEstados": [
+    {
+      "estado": "pendiente",
+      "observaciones": "Pedido creado",
+      "cambiadoPor": {
+        "$oid": "68c19f48beec50180d017d33"
+      },
+      "_id": {
+        "$oid": "68c1a044beec50180d017d49"
+      },
+      "fecha": {
+        "$date": "2025-09-10T15:59:00.640Z"
+      }
+    },
+    {
+      "estado": "Producto \"monitor gamer\" actualizado a: confirmado",
+      "observaciones": "Producto confirmado, en preparación",
+      "cambiadoPor": {
+        "$oid": "68c19820bf02c3088a170f4b"
+      },
+      "_id": {
+        "$oid": "68c1a2f9beec50180d017d78"
+      },
+      "fecha": {
+        "$date": "2025-09-10T16:10:33.619Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-09-10T15:59:00.645Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T16:10:33.630Z"
+  }
+}]

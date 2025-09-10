@@ -18,4 +18,46 @@
   "updatedAt": {
     "$date": "2025-09-09T18:50:18.743Z"
   }
+},
+{
+  "_id": {
+    "$oid": "68c19af8bf02c3088a170f62"
+  },
+  "nombre": "mouse gamer",
+  "descripcion": "lo mejor para los mejores",
+  "precio": 180,
+  "stock": 9,
+  "categoria": {
+    "$oid": "68c06d38b17cca694096f421"
+  },
+  "proveedor": {
+    "$oid": "68c19abebf02c3088a170f56"
+  },
+  "createdAt": {
+    "$date": "2025-09-10T15:36:24.871Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T15:59:00.607Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68c19b43bf02c3088a170f73"
+  },
+  "nombre": "monitor gamer",
+  "descripcion": "gran calidad y resolucion",
+  "precio": 1300,
+  "stock": 9,
+  "categoria": {
+    "$oid": "68c06d38b17cca694096f421"
+  },
+  "proveedor": {
+    "$oid": "68c19abebf02c3088a170f56"
+  },
+  "createdAt": {
+    "$date": "2025-09-10T15:37:39.629Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T15:59:00.542Z"
+  }
 }]
