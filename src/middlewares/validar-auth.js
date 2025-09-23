@@ -11,20 +11,20 @@ export const validateUserExistsEmail = async (req, res, next) => {
 
         if (!user) {
             return res.status(400).json({
-                msg: 'Incorrect credentials, Email or Username does not exist'
+                msg: 'Credenciales incorrectas, el correo electrónico o nombre de usuario no existe'
             });
         }
 
         if(!user.state){
             return res.status(400).json({
-                msg: 'The user does not exist in the database'
+                msg: 'El usuario no existe en la base de datos.'
             });
         }
 
         const validPassword = await verify(user.password, password);
         if(!validPassword){
             return res.status(400).json({
-                msg: 'The password is incorrect'
+                msg: 'La contraseña es incorrecta'
             })
         }
 
@@ -34,7 +34,7 @@ export const validateUserExistsEmail = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            msg: 'Server error during user validation',
+            msg: 'Error del servidor durante la validación del usuario',
             error: error.message
         });
     }
@@ -49,7 +49,7 @@ export const validateExistingUser = async (req, res, next) => {
         if (existingUser) {
             return res.status(400).json({
                 success: false,
-                msg: 'Email already exists'
+                msg: 'El correo electrónico ya existe'
             });
         }
 
@@ -58,8 +58,8 @@ export const validateExistingUser = async (req, res, next) => {
     } catch (error) {
         console.log(error);
         return res.status(500).json({
-            msg: 'Server error during user validation',
+            msg: 'Error del servidor durante la validación del usuario',
             error: error.message
         });
     }
-}
+}       

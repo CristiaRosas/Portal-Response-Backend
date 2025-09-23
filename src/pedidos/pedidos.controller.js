@@ -1,14 +1,12 @@
 import Pedido from "./pedidos.model.js";
 import Producto from "../producto/producto.model.js";
 import User from "../users/user.model.js";
-import Proveedor from "../proveedor/proveedor.model.js";
 
 export const crearPedido = async (req, res) => {
   try {
     const usuarioId = req.usuario._id;
     const { productos, direccionEntrega, telefonoContacto, observaciones } = req.body;
 
-    // Validar que hay productos
     if (!productos || productos.length === 0) {
       return res.status(400).json({
         success: false,
@@ -20,12 +18,10 @@ export const crearPedido = async (req, res) => {
     const productosConInfo = [];
     const productosNoEncontrados = [];
 
-    // Procesar cada producto del pedido
     for (const item of productos) {
-      // Buscar producto por nombre (case insensitive)
       const producto = await Producto.findOne({ 
         nombre: { $regex: new RegExp(`^${item.nombre}$`, 'i') }
-      }).populate("proveedor", "nombre contacto");
+      });
 
       if (!producto) {
         productosNoEncontrados.push(item.nombre);
@@ -35,7 +31,7 @@ export const crearPedido = async (req, res) => {
       if (producto.stock < item.cantidad) {
         return res.status(400).json({
           success: false,
-          message: `Stock insuficiente para el producto: ${producto.nombre}. Stock disponible: ${producto.stock}`,
+          message: `Stock insuficiente para: ${producto.nombre}. Disponible: ${producto.stock}`,
           producto: producto.nombre,
           stockDisponible: producto.stock
         });
@@ -48,18 +44,14 @@ export const crearPedido = async (req, res) => {
         producto: producto._id,
         cantidad: item.cantidad,
         precioUnitario: producto.precio,
-        proveedor: producto.proveedor._id,
         estado: "pendiente"
       });
 
-      // Reducir stock
       producto.stock -= item.cantidad;
       await producto.save();
     }
 
-    // Si hay productos no encontrados
     if (productosNoEncontrados.length > 0) {
-      // Obtener todos los productos disponibles para sugerencias
       const productosDisponibles = await Producto.find({ stock: { $gt: 0 } }, 'nombre precio stock');
       
       return res.status(404).json({
@@ -70,12 +62,10 @@ export const crearPedido = async (req, res) => {
           nombre: p.nombre,
           precio: p.precio,
           stock: p.stock
-        })),
-        sugerencia: "Estos son los productos disponibles:"
+        }))
       });
     }
 
-    // Crear el pedido
     const pedido = new Pedido({
       usuario: usuarioId,
       productos: productosConInfo,
@@ -85,19 +75,16 @@ export const crearPedido = async (req, res) => {
       observaciones,
       historialEstados: [{
         estado: "pendiente",
-        observaciones: "Pedido creado",
+        observaciones: "Pedido creado por el usuario",
         cambiadoPor: usuarioId
       }]
     });
 
     await pedido.save();
 
-    // Populate para respuesta
     const pedidoPopulado = await Pedido.findById(pedido._id)
       .populate("usuario", "name surname email")
-      .populate("productos.producto", "nombre descripcion")
-      .populate("productos.proveedor", "nombre contacto")
-      .populate("historialEstados.cambiadoPor", "name email");
+      .populate("productos.producto", "nombre descripcion");
 
     res.status(201).json({
       success: true,
@@ -115,90 +102,11 @@ export const crearPedido = async (req, res) => {
   }
 };
 
-export const actualizarEstadoProducto = async (req, res) => {
-  try {
-    const { pedidoId, nombreProducto } = req.params;
-    const { estado, observaciones } = req.body;
-    const proveedorId = req.proveedor._id;
-
-    const pedido = await Pedido.findById(pedidoId)
-      .populate("productos.producto", "nombre")
-      .populate("productos.proveedor", "nombre");
-
-    if (!pedido) {
-      return res.status(404).json({
-        success: false,
-        message: "Pedido no encontrado"
-      });
-    }
-
-    // Buscar el índice del producto por nombre
-    const productoIndex = pedido.productos.findIndex(p => 
-      p.producto.nombre.toLowerCase() === nombreProducto.toLowerCase()
-    );
-
-    if (productoIndex === -1) {
-      // Mostrar productos disponibles en este pedido
-      const productosEnPedido = pedido.productos.map(p => p.producto.nombre);
-      
-      return res.status(404).json({
-        success: false,
-        message: `Producto "${nombreProducto}" no encontrado en el pedido`,
-        productosEnPedido,
-        sugerencia: "Estos son los productos en este pedido:"
-      });
-    }
-
-    // Verificar que el producto pertenece al proveedor
-    const productoPedido = pedido.productos[productoIndex];
-    if (productoPedido.proveedor._id.toString() !== proveedorId.toString()) {
-      return res.status(403).json({
-        success: false,
-        message: "No tienes permisos para actualizar este producto"
-      });
-    }
-
-    // Actualizar estado del producto
-    pedido.productos[productoIndex].estado = estado;
-    pedido.productos[productoIndex].fechaActualizacion = new Date();
-
-    // Agregar al historial
-    pedido.historialEstados.push({
-      estado: `Producto "${nombreProducto}" actualizado a: ${estado}`,
-      observaciones: observaciones || `Estado cambiado por el proveedor`,
-      cambiadoPor: req.usuario._id
-    });
-
-    await pedido.save();
-
-    const pedidoActualizado = await Pedido.findById(pedidoId)
-      .populate("usuario", "name surname email")
-      .populate("productos.producto", "nombre descripcion")
-      .populate("productos.proveedor", "nombre contacto")
-      .populate("historialEstados.cambiadoPor", "name email");
-
-    res.json({
-      success: true,
-      message: `Estado del producto "${nombreProducto}" actualizado`,
-      pedido: pedidoActualizado
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      success: false,
-      message: "Error al actualizar estado",
-      error: error.message
-    });
-  }
-};
-
 export const obtenerPedidosUsuario = async (req, res) => {
   try {
     const usuarioId = req.usuario._id;
     const pedidos = await Pedido.find({ usuario: usuarioId })
-      .populate("productos.producto", "nombre descripcion imagen")
-      .populate("productos.proveedor", "nombre contacto")
+      .populate("productos.producto", "nombre descripcion")
       .sort({ createdAt: -1 });
 
     res.json({
@@ -217,46 +125,12 @@ export const obtenerPedidosUsuario = async (req, res) => {
   }
 };
 
-export const obtenerPedidosProveedor = async (req, res) => {
-  try {
-    const proveedorId = req.proveedor._id;
-    
-    const pedidos = await Pedido.find({
-      "productos.proveedor": proveedorId
-    })
-    .populate("usuario", "name surname email")
-    .populate("productos.producto", "nombre descripcion")
-    .sort({ createdAt: -1 });
-
-    // Filtrar solo los productos del proveedor
-    const pedidosFiltrados = pedidos.map(pedido => ({
-      ...pedido.toObject(),
-      productos: pedido.productos.filter(p => p.proveedor.toString() === proveedorId.toString())
-    }));
-
-    res.json({
-      success: true,
-      total: pedidosFiltrados.length,
-      pedidos: pedidosFiltrados
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      success: false,
-      message: "Error al obtener pedidos",
-      error: error.message
-    });
-  }
-};
-
 export const obtenerPedidoPorId = async (req, res) => {
   try {
     const { id } = req.params;
     const pedido = await Pedido.findById(id)
       .populate("usuario", "name surname email telefono")
-      .populate("productos.producto", "nombre descripcion imagen")
-      .populate("productos.proveedor", "nombre contacto email")
+      .populate("productos.producto", "nombre descripcion")
       .populate("historialEstados.cambiadoPor", "name email role");
 
     if (!pedido) {
@@ -266,25 +140,18 @@ export const obtenerPedidoPorId = async (req, res) => {
       });
     }
 
-    // Verificar permisos (usuario o proveedor relacionado)
     const usuarioId = req.usuario._id;
     const esUsuarioPedido = pedido.usuario._id.toString() === usuarioId.toString();
-    const esProveedorRelacionado = pedido.productos.some(p => 
-      p.proveedor && p.proveedor._id.toString() === usuarioId.toString()
-    );
     const esAdmin = req.usuario.role === "APP_ADMIN";
 
-    if (!esUsuarioPedido && !esProveedorRelacionado && !esAdmin) {
+    if (!esUsuarioPedido && !esAdmin) {
       return res.status(403).json({
         success: false,
         message: "No tienes permisos para ver este pedido"
       });
     }
 
-    res.json({
-      success: true,
-      pedido
-    });
+    res.json({ success: true, pedido });
 
   } catch (error) {
     console.error(error);
@@ -309,15 +176,13 @@ export const cancelarPedido = async (req, res) => {
       });
     }
 
-    // Verificar que el usuario es el dueño del pedido
-    if (pedido.usuario.toString() !== usuarioId.toString()) {
+    if (pedido.usuario.toString() !== usuarioId.toString() && req.usuario.role !== "APP_ADMIN") {
       return res.status(403).json({
         success: false,
         message: "Solo puedes cancelar tus propios pedidos"
       });
     }
 
-    // Devolver stock de productos
     for (const item of pedido.productos) {
       if (item.producto) {
         const producto = await Producto.findById(item.producto._id);
@@ -328,13 +193,15 @@ export const cancelarPedido = async (req, res) => {
       }
     }
 
-    // Actualizar estado
+    const canceladoPor = req.usuario.role === "APP_ADMIN" ? "administrador" : "usuario";
+    const nombreCancelador = `${req.usuario.name} ${req.usuario.surname}`;
+
     pedido.estadoGeneral = "cancelado";
     pedido.productos.forEach(p => p.estado = "cancelado");
     
     pedido.historialEstados.push({
       estado: "cancelado",
-      observaciones: "Pedido cancelado por el usuario",
+      observaciones: `Pedido cancelado por el ${canceladoPor}: ${nombreCancelador}`,
       cambiadoPor: usuarioId
     });
 
@@ -343,12 +210,35 @@ export const cancelarPedido = async (req, res) => {
     const pedidoActualizado = await Pedido.findById(id)
       .populate("usuario", "name surname email")
       .populate("productos.producto", "nombre descripcion")
-      .populate("productos.proveedor", "nombre contacto");
+      .populate("historialEstados.cambiadoPor", "name email role");
 
     res.json({
       success: true,
       message: "Pedido cancelado exitosamente",
-      pedido: pedidoActualizado
+      detallesCancelacion: {
+        canceladoPor: canceladoPor,
+        nombreCancelador: nombreCancelador,
+        idCancelador: usuarioId.toString(),
+        rolCancelador: req.usuario.role,
+        fechaCancelacion: new Date().toISOString(),
+        pedidoId: id
+      },
+      pedido: {
+        _id: pedidoActualizado._id,
+        estadoGeneral: pedidoActualizado.estadoGeneral,
+        usuario: {
+          id: pedidoActualizado.usuario._id,
+          nombre: `${pedidoActualizado.usuario.name} ${pedidoActualizado.usuario.surname}`,
+          email: pedidoActualizado.usuario.email
+        },
+        productos: pedidoActualizado.productos.map(p => ({
+          producto: p.producto.nombre,
+          cantidad: p.cantidad,
+          estado: p.estado
+        })),
+        total: pedidoActualizado.total,
+        historial: pedidoActualizado.historialEstados.slice(-1)[0] 
+      }
     });
 
   } catch (error) {
@@ -363,7 +253,6 @@ export const cancelarPedido = async (req, res) => {
 
 export const listarTodosPedidos = async (req, res) => {
   try {
-    // Solo para administradores
     if (req.usuario.role !== "APP_ADMIN") {
       return res.status(403).json({
         success: false,
@@ -377,24 +266,81 @@ export const listarTodosPedidos = async (req, res) => {
     const pedidos = await Pedido.find(query)
       .populate("usuario", "name surname email")
       .populate("productos.producto", "nombre descripcion")
-      .populate("productos.proveedor", "nombre contacto")
       .sort({ createdAt: -1 })
       .skip(Number(desde))
       .limit(Number(limite));
 
     const total = await Pedido.countDocuments(query);
 
-    res.json({
-      success: true,
-      total,
-      pedidos
-    });
+    res.json({ success: true, total, pedidos });
 
   } catch (error) {
     console.error(error);
     res.status(500).json({
       success: false,
       message: "Error al listar pedidos",
+      error: error.message
+    });
+  }
+};
+
+export const actualizarEstadoPedido = async (req, res) => {
+  try {
+    if (req.usuario.role !== "APP_ADMIN") {
+      return res.status(403).json({
+        success: false,
+        message: "Solo el administrador puede actualizar estados de pedidos"
+      });
+    }
+
+    const { id } = req.params;
+    const { estado, observaciones } = req.body;
+
+    const pedido = await Pedido.findById(id);
+    if (!pedido) {
+      return res.status(404).json({
+        success: false,
+        message: "Pedido no encontrado"
+      });
+    }
+
+    pedido.estadoGeneral = estado;
+    pedido.productos.forEach(p => p.estado = estado);
+    
+    const nombreAdmin = `${req.usuario.name} ${req.usuario.surname}`;
+    const observacionesCompletas = observaciones || `Estado cambiado a: ${estado}`;
+    
+    pedido.historialEstados.push({
+      estado: `Actualizado a: ${estado}`,
+      observaciones: `${observacionesCompletas} - Por: ${nombreAdmin}`,
+      cambiadoPor: req.usuario._id
+    });
+
+    await pedido.save();
+
+    const pedidoActualizado = await Pedido.findById(id)
+      .populate("usuario", "name surname email")
+      .populate("productos.producto", "nombre descripcion")
+      .populate("historialEstados.cambiadoPor", "name email");
+
+    res.json({
+      success: true,
+      message: `Estado del pedido actualizado a: ${estado}`,
+      detallesActualizacion: {
+        actualizadoPor: "administrador",
+        nombreAdmin: nombreAdmin,
+        idAdmin: req.usuario._id.toString(),
+        nuevoEstado: estado,
+        fechaActualizacion: new Date().toISOString()
+      },
+      pedido: pedidoActualizado
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error al actualizar estado del pedido",
       error: error.message
     });
   }

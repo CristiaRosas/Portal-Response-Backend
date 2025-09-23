@@ -19,7 +19,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOGU0YzJmMzA5NTgxNjcwZTU3MzMiLCJpYXQiOjE3NTc1MTc4MTcsImV4cCI6MTc1NzUzNTgxN30.fcsn0jA_bZOTp738hPjTJvvQitnnJm0w9rjJdF7O0rQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2MzkzMDMsImV4cCI6MTc1ODY1NzMwM30.XE_0kh4BU1L937JGCkD64IPT13ZZi5gdyZ_cD8WrI0k",
 								"type": "text"
 							}
 						],
@@ -94,13 +94,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQ1NzNjNTM2NzlhYmUyN2E0MjQiLCJpYXQiOjE3NTczNTcyMDksImV4cCI6MTc1NzM3NTIwOX0.SC01hobsPZx15i4vLY4hg2CJ3JuZke9WyTIq3AWIPcA",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTgyMTc3MzEsImV4cCI6MTc1ODIzNTczMX0.w1zCJK0iN1vppzGd8xUWqzVNCVvdf8mzZMO_k2-vFzM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Juan Carlos\",\r\n  \"surname\": \"Pérez López\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Adalberto\",\r\n  \"surname\": \"Pérez López\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -168,7 +168,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQyZTNjNTM2NzlhYmUyN2E0MWYiLCJpYXQiOjE3NTc0NDAwNjcsImV4cCI6MTc1NzQ1ODA2N30.b2lXdkib-aBHJFayVuTDV7JIppVqihtN4eNunybltDc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2NDQ2NjMsImV4cCI6MTc1ODY2MjY2M30.1ag0jHmatHGUi7gLLc2ICEynczIFcgR8eHmAY7jzJ7g",
 								"type": "text"
 							}
 						],
@@ -182,7 +182,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/updateRole/68bf44b83c53679abe27a43d",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/users/updateRole/68d1d5634db89625c7da2fec",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -193,7 +193,7 @@
 								"v1",
 								"users",
 								"updateRole",
-								"68bf44b83c53679abe27a43d"
+								"68d1d5634db89625c7da2fec"
 							]
 						}
 					},
@@ -242,7 +242,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Hector\",\r\n  \"surname\": \"mauricio\",\r\n  \"username\": \"hcordero\",\r\n  \"email\": \"hcordero@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Comprador\",\r\n  \"surname\": \"Prueba\",\r\n  \"username\": \"compra_prueba\",\r\n  \"email\": \"compra@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -267,7 +267,7 @@
 					"response": []
 				},
 				{
-					"name": "Login Normal",
+					"name": "Login Comprador Prueba",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -279,7 +279,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"prompra@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"raw": "{\r\n  \"email\": \"compra@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -304,7 +304,44 @@
 					"response": []
 				},
 				{
-					"name": "login proveedores",
+					"name": "Login Normal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGJmMjQ1NzNjNTM2NzlhYmUyN2E0MjQiLCJpYXQiOjE3NTczNTcyMDksImV4cCI6MTc1NzM3NTIwOX0.SC01hobsPZx15i4vLY4hg2CJ3JuZke9WyTIq3AWIPcA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"scontreras@gmail.com\",\r\n  \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login proveedor prueba",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -346,13 +383,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MTg1NzAsImV4cCI6MTc1NzUzNjU3MH0.Kv_9GctpZcDtgChpYmHaatwEi0-QitUtvyBE1H966qI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1Nzg4NzksImV4cCI6MTc1ODU5Njg3OX0.YJaVGGbngE6dQL11DDA2esd4vjs8KIBPlQKBvEwZnlo",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"monitor gamer\",\r\n  \"descripcion\": \"gran calidad y resolucion\",\r\n  \"precio\": 1300.00,\r\n  \"stock\": 10,\r\n  \"categoriaNombre\": \"Electrónicos\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Tónicos\",\r\n  \"descripcion\": \"liquidos faciales\",\r\n  \"precio\": 65.50, \r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"Cuidado Facial\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -399,34 +436,6 @@
 					"response": []
 				},
 				{
-					"name": "Mis productos / solo proveedores",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MTg1NzAsImV4cCI6MTc1NzUzNjU3MH0.Kv_9GctpZcDtgChpYmHaatwEi0-QitUtvyBE1H966qI",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/mis-productos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"productos",
-								"mis-productos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "filtro categoria",
 					"request": {
 						"method": "GET",
@@ -455,7 +464,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/buscar/68c073e36e2b4afda2f07b0c",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/buscar/68d1c8daad7597374aa85b77",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -466,30 +475,7 @@
 								"v1",
 								"productos",
 								"buscar",
-								"68c073e36e2b4afda2f07b0c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "filtro por proveedor",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/proveedor/Billares Chapinlandia premium",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"productos",
-								"proveedor",
-								"Billares Chapinlandia premium"
+								"68d1c8daad7597374aa85b77"
 							]
 						}
 					},
@@ -502,13 +488,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDI5MjksImV4cCI6MTc1NzQ2MDkyOX0.dV4EYJLMAWUKg-P3PSFeTEitcYXVvndncwQop1qhEWU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1ODIzNTAsImV4cCI6MTc1ODYwMDM1MH0.VSDsW5OiqLxe7dOZ3sV8OGRcCsrmfNNPPdHb1d8c9BU",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Shampo tio nacho\",\r\n  \"precio\": 17.50,\r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"cuidado facial\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Shampoo\",\r\n  \"precio\": 18.50,\r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"cuidado Capilar\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -516,7 +502,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68c073e36e2b4afda2f07b0c",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68d1c8daad7597374aa85b77",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -527,7 +513,7 @@
 								"v1",
 								"productos",
 								"editar",
-								"68c073e36e2b4afda2f07b0c"
+								"68d1c8daad7597374aa85b77"
 							]
 						}
 					},
@@ -540,13 +526,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMwNmMxM2IxN2NjYTY5NDA5NmY0MDAiLCJpYXQiOjE3NTc0NDQwODgsImV4cCI6MTc1NzQ2MjA4OH0.jQqdMKUlslTI6no9xU3jq2yFP4k3GyRivQK-0KdhluM",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTg2MzkzMTcsImV4cCI6MTc1ODY1NzMxN30.8clf4knH9EVOeO7xyqvz5qTKO2wTLO50DA8dmjdTZpo",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombreProducto\": \"desmaquillante\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -554,7 +540,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/eliminar",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/eliminar/68d1c994ad7597374aa85b82",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -564,7 +550,8 @@
 								"PortalResponseDQ",
 								"v1",
 								"productos",
-								"eliminar"
+								"eliminar",
+								"68d1c994ad7597374aa85b82"
 							]
 						}
 					},
@@ -579,10 +566,16 @@
 					"name": "Agregar Categoria",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1Nzg4NzksImV4cCI6MTc1ODU5Njg3OX0.YJaVGGbngE6dQL11DDA2esd4vjs8KIBPlQKBvEwZnlo",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"maquillaje\",\r\n  \"descripcion\": \"productos de belleza\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Productos Farmacéuticos\",\r\n  \"descripcion\": \"productos de belleza\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -633,7 +626,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/id/68c0569fb98141892a65183f",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/id/68d1ca31006994513845b35f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -644,7 +637,7 @@
 								"v1",
 								"categorias",
 								"id",
-								"68c0569fb98141892a65183f"
+								"68d1ca31006994513845b35f"
 							]
 						}
 					},
@@ -656,7 +649,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/nombre/tecnologia",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/nombre/Cuidado Facial",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -667,7 +660,7 @@
 								"v1",
 								"categorias",
 								"nombre",
-								"tecnologia"
+								"Cuidado Facial"
 							]
 						}
 					},
@@ -677,10 +670,16 @@
 					"name": "Actualizar Categoria por Id",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1Nzg4NzksImV4cCI6MTc1ODU5Njg3OX0.YJaVGGbngE6dQL11DDA2esd4vjs8KIBPlQKBvEwZnlo",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"prueba de eliminacion editada\",\r\n  \"descripcion\": \"prueba de eliminacion editada\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Cuidado Facial\",\r\n  \"descripcion\": \"productos de belleza\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -688,7 +687,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68c05a5566adfa21e7cc4abd",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68d1ca31006994513845b35f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -698,7 +697,7 @@
 								"PortalResponseDQ",
 								"v1",
 								"categorias",
-								"68c05a5566adfa21e7cc4abd"
+								"68d1ca31006994513845b35f"
 							]
 						}
 					},
@@ -708,13 +707,19 @@
 					"name": "Eliminar",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1Nzg4NzksImV4cCI6MTc1ODU5Njg3OX0.YJaVGGbngE6dQL11DDA2esd4vjs8KIBPlQKBvEwZnlo",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68c05a5566adfa21e7cc4abd",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/categorias/68d1cb12006994513845b372",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -724,206 +729,7 @@
 								"PortalResponseDQ",
 								"v1",
 								"categorias",
-								"68c05a5566adfa21e7cc4abd"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Proveedores",
-			"item": [
-				{
-					"name": "Agregar Proveedor",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"lunaTec\",\r\n  \"contacto\": \"luna - +50236995236\",\r\n  \"userEmail\": \"cluna@gmail.com\",\r\n  \"categoriasNombres\": [\"Electrónicos\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/agregar",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"agregar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listar Proveedores",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/listar",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"listar"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Busar Por Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar/68c06cfcb17cca694096f41c",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"buscar",
-								"68c06cfcb17cca694096f41c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Editar Proveedor",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar/68bf527145ae9226adf6da3c",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"buscar",
-								"68bf527145ae9226adf6da3c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Listar por nombre",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/buscar-nombre/Billares Chapinlandia",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"buscar-nombre",
-								"Billares Chapinlandia"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Actualizar Proveedor",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Billares Chapinlandia Premium\",\r\n  \"contacto\": \"Adalberto Corozco - +50236995274\",\r\n  \"categoriasNombres\": [\"cuidado corporal\", \"cuidado facial\"]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/editar/68c06cfcb17cca694096f41c",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"editar",
-								"68c06cfcb17cca694096f41c"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Asignar Categoria",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"proveedorNombre\": \"Billares Chapinlandia premium\",\r\n  \"categoriaNombre\": \"maquillaje\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/proveedores/asignar-categoria",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"proveedores",
-								"asignar-categoria"
+								"68d1cb12006994513845b372"
 							]
 						}
 					},
@@ -941,13 +747,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOWY0OGJlZWM1MDE4MGQwMTdkMzMiLCJpYXQiOjE3NTc1MTk3NTQsImV4cCI6MTc1NzUzNzc1NH0.FoYq4laIR_BvKPwXgYrEVVtHvB0XdVDao1RNTjxYHYw",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTg1ODIyMjEsImV4cCI6MTc1ODYwMDIyMX0.PbwvPJtz6RiM3z3AYyhmrO-W0jigsXXpUg1xFPNQFfc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"productos\": [\r\n    {\r\n      \"nombre\": \"monitor gamer\",\r\n      \"cantidad\": 1\r\n    },\r\n    {\r\n      \"nombre\": \"mouse gamer\",\r\n      \"cantidad\": 1\r\n    }\r\n  ],\r\n  \"direccionEntrega\": \"edificio ilumina\",\r\n  \"telefonoContacto\": \"+502 56340802\",\r\n  \"observaciones\": \"Por favor entregar antes de las 5pm\"\r\n}",
+							"raw": "{\r\n  \"productos\": [\r\n    {\r\n      \"nombre\": \"Shampoo\",\r\n      \"cantidad\": 2\r\n    }\r\n  ],\r\n  \"direccionEntrega\": \"edificio ilumina\",\r\n  \"telefonoContacto\": \"+502 5434 0802\",\r\n  \"observaciones\": \"Por favor entregar antes de las 5pm\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -978,7 +784,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOWY0OGJlZWM1MDE4MGQwMTdkMzMiLCJpYXQiOjE3NTc1MTk3NTQsImV4cCI6MTc1NzUzNzc1NH0.FoYq4laIR_BvKPwXgYrEVVtHvB0XdVDao1RNTjxYHYw",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTg2Mzk5NjYsImV4cCI6MTc1ODY1Nzk2Nn0.sjmpRg7afqgrdia7HaBd5nF8m-Ba4Z-f4u36vyxr30o",
 								"type": "text"
 							}
 						],
@@ -1000,18 +806,18 @@
 					"response": []
 				},
 				{
-					"name": "Obtener mis pedidos / proveedor",
+					"name": "Obtener mis pedidos admin hechos por el admin",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MjAxODksImV4cCI6MTc1NzUzODE4OX0.Rr_puMY9JwCJtQLokY9FRJ5AbziJrHwp8itcVHde3nc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2Mzk5MjgsImV4cCI6MTc1ODY1NzkyOH0._iEm6bgu_vVxE0sYuhDNSaJv6BIm50aVMeJSIv0cw5s",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/proveedor/mis-pedidos",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/todos?limite=20&desde=0&estado=pendiente",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1021,8 +827,22 @@
 								"PortalResponseDQ",
 								"v1",
 								"pedidos",
-								"proveedor",
-								"mis-pedidos"
+								"admin",
+								"todos"
+							],
+							"query": [
+								{
+									"key": "limite",
+									"value": "20"
+								},
+								{
+									"key": "desde",
+									"value": "0"
+								},
+								{
+									"key": "estado",
+									"value": "pendiente"
+								}
 							]
 						}
 					},
@@ -1035,7 +855,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTc1MjAxODksImV4cCI6MTc1NzUzODE4OX0.Rr_puMY9JwCJtQLokY9FRJ5AbziJrHwp8itcVHde3nc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTg1NjYwMzQsImV4cCI6MTc1ODU4NDAzNH0.VefUKlz1feJe2GdCkHg99yvgPWZgq_VffoY_a_UZMcI",
 								"type": "text"
 							}
 						],
@@ -1049,7 +869,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/proveedor/actualizar-estado/68c1a044beec50180d017d46/monitor gamer",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/actualizar-estado/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1059,10 +879,9 @@
 								"PortalResponseDQ",
 								"v1",
 								"pedidos",
-								"proveedor",
+								"admin",
 								"actualizar-estado",
-								"68c1a044beec50180d017d46",
-								"monitor gamer"
+								""
 							]
 						}
 					},
@@ -1075,7 +894,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOGU0YzJmMzA5NTgxNjcwZTU3MzMiLCJpYXQiOjE3NTc1MjA3NjYsImV4cCI6MTc1NzUzODc2Nn0.PFEAajKLHZvaDTsKtVjeRwxxhuMFbOflwjqCuPvqBAY",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2Mzk5MjgsImV4cCI6MTc1ODY1NzkyOH0._iEm6bgu_vVxE0sYuhDNSaJv6BIm50aVMeJSIv0cw5s",
 								"type": "text"
 							}
 						],
@@ -1092,6 +911,35 @@
 								"pedidos",
 								"admin",
 								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1ODIzNTAsImV4cCI6MTc1ODYwMDM1MH0.VSDsW5OiqLxe7dOZ3sV8OGRcCsrmfNNPPdHb1d8c9BU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/cancelar/68d1dc5503e1c3325e228d33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"cancelar",
+								"68d1dc5503e1c3325e228d33"
 							]
 						}
 					},

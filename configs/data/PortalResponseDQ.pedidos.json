@@ -1,83 +1,189 @@
 [{
   "_id": {
-    "$oid": "68c1a044beec50180d017d46"
+    "$oid": "68d1d6f64db89625c7da300a"
   },
   "usuario": {
-    "$oid": "68c19f48beec50180d017d33"
+    "$oid": "68d1d59e4db89625c7da2ff1"
   },
   "productos": [
     {
       "producto": {
-        "$oid": "68c19b43bf02c3088a170f73"
+        "$oid": "68d1c8daad7597374aa85b77"
       },
       "cantidad": 1,
-      "precioUnitario": 1300,
-      "proveedor": {
-        "$oid": "68c19abebf02c3088a170f56"
-      },
-      "estado": "confirmado",
+      "precioUnitario": 18.5,
+      "estado": "cancelado",
       "_id": {
-        "$oid": "68c1a044beec50180d017d47"
+        "$oid": "68d1d6f64db89625c7da300b"
       },
       "fechaActualizacion": {
-        "$date": "2025-09-10T16:10:33.610Z"
-      }
-    },
-    {
-      "producto": {
-        "$oid": "68c19af8bf02c3088a170f62"
-      },
-      "cantidad": 1,
-      "precioUnitario": 180,
-      "proveedor": {
-        "$oid": "68c19abebf02c3088a170f56"
-      },
-      "estado": "pendiente",
-      "_id": {
-        "$oid": "68c1a044beec50180d017d48"
-      },
-      "fechaActualizacion": {
-        "$date": "2025-09-10T15:59:00.638Z"
+        "$date": "2025-09-22T23:08:38.948Z"
       }
     }
   ],
-  "estadoGeneral": "parcial",
-  "total": 1480,
+  "estadoGeneral": "cancelado",
+  "total": 18.5,
   "direccionEntrega": "edificio ilumina",
-  "telefonoContacto": "+502 56340802",
+  "telefonoContacto": "+502 5434 0802",
   "observaciones": "Por favor entregar antes de las 5pm",
   "historialEstados": [
     {
       "estado": "pendiente",
-      "observaciones": "Pedido creado",
+      "observaciones": "Pedido creado por el usuario",
       "cambiadoPor": {
-        "$oid": "68c19f48beec50180d017d33"
+        "$oid": "68d1d59e4db89625c7da2ff1"
       },
       "_id": {
-        "$oid": "68c1a044beec50180d017d49"
+        "$oid": "68d1d6f64db89625c7da300c"
       },
       "fecha": {
-        "$date": "2025-09-10T15:59:00.640Z"
+        "$date": "2025-09-22T23:08:38.956Z"
       }
     },
     {
-      "estado": "Producto \"monitor gamer\" actualizado a: confirmado",
-      "observaciones": "Producto confirmado, en preparación",
+      "estado": "cancelado",
+      "observaciones": "Pedido cancelado",
       "cambiadoPor": {
-        "$oid": "68c19820bf02c3088a170f4b"
+        "$oid": "68d1d59e4db89625c7da2ff1"
       },
       "_id": {
-        "$oid": "68c1a2f9beec50180d017d78"
+        "$oid": "68d1da634db89625c7da3025"
       },
       "fecha": {
-        "$date": "2025-09-10T16:10:33.619Z"
+        "$date": "2025-09-22T23:23:15.450Z"
       }
     }
   ],
   "createdAt": {
-    "$date": "2025-09-10T15:59:00.645Z"
+    "$date": "2025-09-22T23:08:38.977Z"
   },
   "updatedAt": {
-    "$date": "2025-09-10T16:10:33.630Z"
+    "$date": "2025-09-22T23:23:15.460Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1dbfe03e1c3325e228d08"
+  },
+  "usuario": {
+    "$oid": "68d1d59e4db89625c7da2ff1"
+  },
+  "productos": [
+    {
+      "producto": {
+        "$oid": "68d1c8daad7597374aa85b77"
+      },
+      "cantidad": 5,
+      "precioUnitario": 18.5,
+      "estado": "cancelado",
+      "_id": {
+        "$oid": "68d1dbfe03e1c3325e228d09"
+      },
+      "fechaActualizacion": {
+        "$date": "2025-09-22T23:30:06.615Z"
+      }
+    }
+  ],
+  "estadoGeneral": "cancelado",
+  "total": 92.5,
+  "direccionEntrega": "edificio ilumina",
+  "telefonoContacto": "+502 5434 0802",
+  "observaciones": "Por favor entregar antes de las 5pm",
+  "historialEstados": [
+    {
+      "estado": "pendiente",
+      "observaciones": "Pedido creado por el usuario",
+      "cambiadoPor": {
+        "$oid": "68d1d59e4db89625c7da2ff1"
+      },
+      "_id": {
+        "$oid": "68d1dbfe03e1c3325e228d0a"
+      },
+      "fecha": {
+        "$date": "2025-09-22T23:30:06.622Z"
+      }
+    },
+    {
+      "estado": "cancelado",
+      "observaciones": "Pedido cancelado por el usuario: Comprador Prueba",
+      "cambiadoPor": {
+        "$oid": "68d1d59e4db89625c7da2ff1"
+      },
+      "_id": {
+        "$oid": "68d1dc2003e1c3325e228d26"
+      },
+      "fecha": {
+        "$date": "2025-09-22T23:30:40.697Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-09-22T23:30:06.633Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T23:30:40.708Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1dc5503e1c3325e228d33"
+  },
+  "usuario": {
+    "$oid": "68d1d59e4db89625c7da2ff1"
+  },
+  "productos": [
+    {
+      "producto": {
+        "$oid": "68d1c8daad7597374aa85b77"
+      },
+      "cantidad": 2,
+      "precioUnitario": 18.5,
+      "estado": "cancelado",
+      "_id": {
+        "$oid": "68d1dc5503e1c3325e228d34"
+      },
+      "fechaActualizacion": {
+        "$date": "2025-09-22T23:31:33.941Z"
+      }
+    }
+  ],
+  "estadoGeneral": "cancelado",
+  "total": 37,
+  "direccionEntrega": "edificio ilumina",
+  "telefonoContacto": "+502 5434 0802",
+  "observaciones": "Por favor entregar antes de las 5pm",
+  "historialEstados": [
+    {
+      "estado": "pendiente",
+      "observaciones": "Pedido creado por el usuario",
+      "cambiadoPor": {
+        "$oid": "68d1d59e4db89625c7da2ff1"
+      },
+      "_id": {
+        "$oid": "68d1dc5503e1c3325e228d35"
+      },
+      "fecha": {
+        "$date": "2025-09-22T23:31:33.942Z"
+      }
+    },
+    {
+      "estado": "cancelado",
+      "observaciones": "Pedido cancelado por el administrador: Cristian Rene",
+      "cambiadoPor": {
+        "$oid": "68d1c648ad7597374aa85b64"
+      },
+      "_id": {
+        "$oid": "68d1dc6d03e1c3325e228d49"
+      },
+      "fecha": {
+        "$date": "2025-09-22T23:31:57.971Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-09-22T23:31:33.946Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T23:31:57.974Z"
   }
 }]

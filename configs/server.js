@@ -9,12 +9,9 @@
     import authRoutes from '../src/auth/auth.routes.js';
     import userRoutes from '../src/users/user.routes.js';
     import pedidoRoutes from '../src/pedidos/pedidos.routes.js';
-    import proveedorRoutes from '../src/proveedor/proveedor.routes.js';
     import categoriaRoutes from '../src/categoria/categoria.routes.js';
 
-
-
-
+    
     const middlewares = (app) => {
         app.use(express.urlencoded({ extended: false }));
         app.use(cors());
@@ -28,7 +25,6 @@
         app.use('/PortalResponseDQ/v1/auth', authRoutes);
         app.use('/PortalResponseDQ/v1/users', userRoutes);
         app.use('/PortalResponseDQ/v1/pedidos', pedidoRoutes);
-        app.use('/PortalResponseDQ/v1/proveedores', proveedorRoutes);
         app.use('/PortalResponseDQ/v1/categorias', categoriaRoutes);
 
 

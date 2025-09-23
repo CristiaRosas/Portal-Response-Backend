@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { validarJWT } from "../middlewares/validar-jwt.js";
+import { tieneRole } from "../middlewares/validar-roles.js";
 import { 
   crearCategoria, 
   listarCategorias, 
@@ -10,11 +12,22 @@ import {
 
 const router = Router();
 
-router.post("/agregar", crearCategoria);
 router.get("/", listarCategorias);
-router.get("/id/:id", obtenerCategoriaPorId); // Por ID
-router.get("/nombre/:nombre", obtenerCategoriaPorNombre); // Por nombre
-router.put("/:id", actualizarCategoria);
-router.delete("/:id", eliminarCategoria);
+router.get("/id/:id", obtenerCategoriaPorId);
+router.get("/nombre/:nombre", obtenerCategoriaPorNombre);
+router.post("/agregar", [
+  validarJWT,
+  tieneRole("APP_ADMIN")
+], crearCategoria);
+
+router.put("/:id", [
+  validarJWT,
+  tieneRole("APP_ADMIN")
+], actualizarCategoria);
+
+router.delete("/:id", [
+  validarJWT,
+  tieneRole("APP_ADMIN")
+], eliminarCategoria);
 
 export default router;

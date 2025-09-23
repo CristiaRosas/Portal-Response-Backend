@@ -1,70 +1,112 @@
 [{
   "_id": {
-    "$oid": "68c06cc8b17cca694096f411"
+    "$oid": "68d1c84fad7597374aa85b6e"
   },
-  "nombre": "cuidado corporal",
-  "descripcion": "productos para el cuidado corporal",
-  "estado": true,
-  "createdAt": {
-    "$date": "2025-09-09T18:07:04.437Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-09T18:07:04.437Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68c06cd1b17cca694096f413"
-  },
-  "nombre": "cuidado facial",
-  "descripcion": "productos para el cuidado facial",
-  "estado": true,
-  "createdAt": {
-    "$date": "2025-09-09T18:07:13.298Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-09T18:07:13.298Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68c06cdbb17cca694096f415"
-  },
-  "nombre": "cuidado capilar",
-  "descripcion": "productos para el cuidado capilar",
-  "estado": true,
-  "createdAt": {
-    "$date": "2025-09-09T18:07:23.166Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-09T18:07:23.166Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68c06d38b17cca694096f421"
-  },
-  "nombre": "Electrónicos",
-  "descripcion": "productos Electrónicos",
-  "estado": true,
-  "createdAt": {
-    "$date": "2025-09-09T18:08:56.526Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-09T18:08:56.526Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68c070495e5bf7b258ba756a"
-  },
-  "nombre": "maquillaje",
+  "nombre": "Cuidado Corporal",
   "descripcion": "productos de belleza",
   "estado": true,
   "createdAt": {
-    "$date": "2025-09-09T18:22:01.178Z"
+    "$date": "2025-09-22T22:06:07.683Z"
   },
   "updatedAt": {
-    "$date": "2025-09-09T18:22:01.178Z"
+    "$date": "2025-09-22T22:06:07.683Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1ca31006994513845b35f"
+  },
+  "nombre": "Cuidado Facial",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:14:09.141Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:17:22.472Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cb12006994513845b372"
+  },
+  "nombre": "Cuidado prueba eliminacion",
+  "descripcion": "productos de belleza",
+  "estado": false,
+  "createdAt": {
+    "$date": "2025-09-22T22:17:54.905Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:19:22.091Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cecc4db89625c7da2fc1"
+  },
+  "nombre": "Cuidado Capilar",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:33:48.659Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:33:48.659Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cedb4db89625c7da2fc4"
+  },
+  "nombre": "Spa",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:34:03.282Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:34:03.282Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cee64db89625c7da2fc7"
+  },
+  "nombre": "Cuidado de Bebe",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:34:14.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:34:14.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cef64db89625c7da2fca"
+  },
+  "nombre": "Suplementos Diabeticos",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:34:30.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:34:30.886Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d1cf184db89625c7da2fcd"
+  },
+  "nombre": "Productos Farmacéuticos",
+  "descripcion": "productos de belleza",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-09-22T22:35:04.928Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-22T22:35:04.928Z"
   }
 }]

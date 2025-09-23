@@ -6,7 +6,7 @@ export const preventEmailOrPasswordUpdate = (req, res, next) => {
     if (password || email) {
         return res.status(400).json({
             success: false,
-            message: 'Cannot update password or email directly',
+            message: 'No se puede actualizar la contraseña o el correo electrónico directamente',
         });
     }
     next();
@@ -20,7 +20,7 @@ export const validateOldPassword = async (req, res, next) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'User not found'
+                msg: 'Usuario no encontrado'
             });
         }
 
@@ -28,7 +28,7 @@ export const validateOldPassword = async (req, res, next) => {
         if (!validPassword) {
             return res.status(400).json({
                 success: false,
-                msg: 'The current password is incorrect'
+                msg: 'La contraseña actual es incorrecta'
             });
         }
 
@@ -37,7 +37,7 @@ export const validateOldPassword = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({
             success: false,
-            msg: 'Error validating current password',
+            msg: 'Error al validar la contraseña actual',
             error: error.message
         });
     }
@@ -48,7 +48,7 @@ export const confirmDeletionMiddleware = (req, res, next) => {
     if (!confirmDeletion) {
         return res.status(400).json({
             success: false,
-            msg: 'Please confirm the deletion action'
+            msg: 'Por favor, confirme la acción de eliminación'
         });
     }
     next();
@@ -63,7 +63,7 @@ export const validateUserOnlyDelete = async (req, res, next) => {
         if (id !== authenticatedUserId) {
             return res.status(403).json({
                 success: false,
-                msg: 'You can only delete your own account'
+                msg: 'Sólo puedes eliminar tu propia cuenta'
             });
         }
 
@@ -71,7 +71,7 @@ export const validateUserOnlyDelete = async (req, res, next) => {
         if (!validPassword) {
             return res.status(400).json({
                 success: false,
-                msg: 'The current password is incorrect'
+                msg: 'La contraseña actual es incorrecta'
             });
         } else {
             await User.findByIdAndUpdate(id, { state: false });
@@ -81,7 +81,7 @@ export const validateUserOnlyDelete = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({
             success: false,
-            msg: 'Error validating user for deletion',
+            msg: 'Error al validar el usuario para su eliminación',
             error: error.message
         });
     }
@@ -93,9 +93,9 @@ export const validateUserExists = async (req, res, next) => {
     if (!user) {
         return res.status(404).json({
             success: false,
-            msg: 'User not found'
+            msg: 'Usuario no encontrado'
         });
-    }
+    } 
     next();
 };
 
@@ -105,7 +105,7 @@ export const validateUserRole = (req, res, next) => {
     if (!validRoles.includes(role)) {
         return res.status(400).json({
             success: false,
-            msg: 'Invalid role. Allowed roles: APP_ROLE, NORMAL_ROLE'
+            msg: 'Rol no válido. Roles permitidos: APP_ADMIN, NORMAL_ROLE'
         });
     }
     next();

@@ -21,7 +21,7 @@ export const usersView = async (req, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error getting users",
+            msg: "Error al obtener usuarios",
             error: error.message
         });
     }
@@ -40,7 +40,7 @@ export const updateUser = async (req, res = response) => {
         if (attemptedRestrictedUpdate) {
             return res.status(400).json({
                 success: false,
-                msg: 'Cannot update email, username, role or password directly. Use specific endpoints for these operations.'
+                msg: 'No se puede actualizar el correo electrónico, el nombre de usuario, el rol ni la contraseña directamente. Utilice puntos de conexión específicos para estas operaciones..'
             });
         }
         const user = await User.findByIdAndUpdate(
@@ -52,13 +52,13 @@ export const updateUser = async (req, res = response) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'User not found'
+                msg: 'Usuario no encontrado'
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: 'User updated successfully',
+            msg: 'Usuario actualizado con éxito',
             user: {
                 name: user.name,
                 surname: user.surname,
@@ -70,7 +70,7 @@ export const updateUser = async (req, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Error updating user',
+            msg: 'Error al actualizar el usuario',
             error: error.message
         });
     }
@@ -86,14 +86,14 @@ export const updatePassword = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            msg: 'Password updated successfully'
+            msg: 'Contraseña actualizada exitosamente'
         });
 
     } catch (error) {
         console.error('Error updating password:', error);
         res.status(500).json({
             success: false,
-            msg: 'Failed to update password',
+            msg: 'No se pudo actualizar la contraseña',
             error: error.message
         });
     }
@@ -107,13 +107,13 @@ export const deleteUser = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: 'User disabled successfully',
+            message: 'Usuario deshabilitado exitosamente',
         });
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: 'Error deleting user',
+            msg: 'Error al eliminar usuario',
             error: error.message,
         });
     }
@@ -127,7 +127,7 @@ export const updateRole = async (req, res) => {
         if (!['APP_ADMIN', 'NORMAL_ROLE'].includes(role)) {
             return res.status(400).json({
                 success: false,
-                msg: 'Invalid role. Must be APP_ADMIN or NORMAL_ROLE'
+                msg: 'Rol no válido. Debe ser APP_ADMIN o NORMAL_ROLE.'
             });
         }
 
@@ -140,20 +140,20 @@ export const updateRole = async (req, res) => {
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: 'User not found'
+                msg: 'Usuario no encontrado'
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: 'User role updated successfully',
+            msg: 'Rol de usuario actualizado exitosamente',
             user
         });
     } catch (error) {
-        console.error('Error updating user role:', error);
+        console.error('Error al actualizar el rol del usuario:', error);
         res.status(500).json({
             success: false,
-            msg: 'Failed to update user role',
+            msg: 'No se pudo actualizar el rol del usuario',
             error: error.message
         });
     }

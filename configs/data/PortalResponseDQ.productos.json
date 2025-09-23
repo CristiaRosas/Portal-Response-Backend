@@ -1,63 +1,162 @@
 [{
   "_id": {
-    "$oid": "68c073e36e2b4afda2f07b0c"
+    "$oid": "68d1c8daad7597374aa85b77"
   },
-  "nombre": "Shampo tio nacho",
-  "descripcion": "shampo de la mehor calidad",
-  "precio": 17.5,
+  "nombre": "Shampoo",
+  "descripcion": "cuidado del acne",
+  "precio": 18.5,
   "stock": 25,
   "categoria": {
-    "$oid": "68c06cd1b17cca694096f413"
-  },
-  "proveedor": {
-    "$oid": "68c06cfcb17cca694096f41c"
+    "$oid": "68d1cecc4db89625c7da2fc1"
   },
   "createdAt": {
-    "$date": "2025-09-09T18:37:23.491Z"
+    "$date": "2025-09-22T22:08:26.498Z"
   },
   "updatedAt": {
-    "$date": "2025-09-09T18:50:18.743Z"
+    "$date": "2025-09-22T23:31:57.964Z"
   }
 },
 {
   "_id": {
-    "$oid": "68c19af8bf02c3088a170f62"
+    "$oid": "68d1cf6c4db89625c7da2fd3"
   },
-  "nombre": "mouse gamer",
-  "descripcion": "lo mejor para los mejores",
-  "precio": 180,
-  "stock": 9,
+  "nombre": "Body Milk",
+  "descripcion": "crema corporal",
+  "precio": 80.5,
+  "stock": 25,
   "categoria": {
-    "$oid": "68c06d38b17cca694096f421"
-  },
-  "proveedor": {
-    "$oid": "68c19abebf02c3088a170f56"
+    "$oid": "68d1c84fad7597374aa85b6e"
   },
   "createdAt": {
-    "$date": "2025-09-10T15:36:24.871Z"
+    "$date": "2025-09-22T22:36:28.744Z"
   },
   "updatedAt": {
-    "$date": "2025-09-10T15:59:00.607Z"
+    "$date": "2025-09-22T22:36:28.744Z"
   }
 },
 {
   "_id": {
-    "$oid": "68c19b43bf02c3088a170f73"
+    "$oid": "68d1cfc84db89625c7da2fdb"
   },
-  "nombre": "monitor gamer",
-  "descripcion": "gran calidad y resolucion",
-  "precio": 1300,
-  "stock": 9,
+  "nombre": "Tónicos",
+  "descripcion": "liquidos faciales",
+  "precio": 65.5,
+  "stock": 25,
   "categoria": {
-    "$oid": "68c06d38b17cca694096f421"
-  },
-  "proveedor": {
-    "$oid": "68c19abebf02c3088a170f56"
+    "$oid": "68d1ca31006994513845b35f"
   },
   "createdAt": {
-    "$date": "2025-09-10T15:37:39.629Z"
+    "$date": "2025-09-22T22:38:00.509Z"
   },
   "updatedAt": {
-    "$date": "2025-09-10T15:59:00.542Z"
+    "$date": "2025-09-22T22:38:00.509Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d0aca35d08a0667f2a4c"
+  },
+  "nombre": "Aloe Vera Gel",
+  "descripcion": "liquidos faciales",
+  "precio": 65.5,
+  "stock": 25,
+  "categoria": {
+    "$oid": "68d1c84fad7597374aa85b6e"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T16:54:04.163Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T16:57:14.681Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d0e6a35d08a0667f2a53"
+  },
+  "nombre": "Cremas y geles anticelulíticos",
+  "descripcion": "liquidos Corporales",
+  "precio": 55.5,
+  "stock": 30,
+  "categoria": {
+    "$oid": "68d1c84fad7597374aa85b6e"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T16:55:02.371Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T16:55:02.371Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d1d0a35d08a0667f2a75"
+  },
+  "nombre": "Exfoliantes",
+  "descripcion": "liquidos Faciales",
+  "precio": 45.5,
+  "stock": 30,
+  "categoria": {
+    "$oid": "68d1ca31006994513845b35f"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T16:58:56.500Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T16:58:56.500Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d1eba35d08a0667f2a7c"
+  },
+  "nombre": "Mascarillas Faciales",
+  "descripcion": "liquidos Faciales",
+  "precio": 35.5,
+  "stock": 15,
+  "categoria": {
+    "$oid": "68d1ca31006994513845b35f"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T16:59:23.823Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T16:59:23.823Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d1fba35d08a0667f2a83"
+  },
+  "nombre": "Cremas Faciales",
+  "descripcion": "liquidos Faciales",
+  "precio": 75,
+  "stock": 15,
+  "categoria": {
+    "$oid": "68d1ca31006994513845b35f"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T16:59:39.150Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T16:59:39.150Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68d2d243a35d08a0667f2a90"
+  },
+  "nombre": "Tratamientos capilares",
+  "descripcion": "productos capilares",
+  "precio": 48,
+  "stock": 15,
+  "categoria": {
+    "$oid": "68d1cecc4db89625c7da2fc1"
+  },
+  "createdAt": {
+    "$date": "2025-09-23T17:00:51.920Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-23T17:00:51.920Z"
   }
 }]

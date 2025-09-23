@@ -10,7 +10,7 @@ export const login = async(req, res) => {
         const token = await generarJWT(user.id);
 
         return res.status(200).json({
-            msg: 'Login successful',
+            msg: 'Inicio de sesión exitosa',
             userDetails: {
                 name: user.name,
                 surname: user.surname,
@@ -25,7 +25,7 @@ export const login = async(req, res) => {
     } catch (e) {
         console.log(e);
         res.status(500).json({
-            message: "Server error",
+            message: "Error del servidor",
             error: e.message
         })
     }
@@ -44,8 +44,8 @@ export const register = async (req, res) => {
 
         if (existingUser) {
             return res.status(400).json({
-                message: "Email or username already exists",
-                error: "DUPLICATE_ENTRY"
+                message: "El correo electrónico o nombre de usuario ya existe",
+                error: "ENTRADA DUPLICADA"
             });
         }
 
@@ -60,7 +60,7 @@ export const register = async (req, res) => {
         })
 
         return res.status(200).json({
-            message: "User registered successfully",
+            message: "Usuario registrado exitosamente",
             userDetails: {
                 user: user.email
             }
@@ -70,12 +70,12 @@ export const register = async (req, res) => {
         console.log(error);
         if (error.code === 11000) {
             return res.status(400).json({
-                message: "Email or username already exists",
-                error: "DUPLICATE_ENTRY"
+                message: "El correo electrónico o nombre de usuario ya existe",
+                error: "ENTRADA DUPLICADA"
             });
         }
         return res.status(500).json({
-            message: "Error creating user",
+            message: "Error al crear el usuario",
             error: error.message
         });
     }
@@ -88,7 +88,7 @@ const createAdmin = async ( name, surname, username, email, password, role ) => 
         if (role === "APP_ADMIN") {
             const existAdmin = await User.findOne({ role: "APP_ADMIN" });
             if (existAdmin) {
-                console.log("A user with admin role already exists. Another cannot be created.");
+                console.log("Ya existe un usuario con rol de administrador. No se puede crear otro.");
                 return null;
             };
         };
@@ -104,11 +104,11 @@ const createAdmin = async ( name, surname, username, email, password, role ) => 
         role });
 
         await newUser.save();
-        console.log("User created successfully:", newUser);
+        console.log("Usuario creado con éxito:", newUser);
         return newUser;
         
     } catch (error) {
-        console.error("Error creating user:", error);
+        console.error("Error al crear el usuario:", error);
         return null;
     }
 }

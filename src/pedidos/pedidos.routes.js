@@ -1,52 +1,52 @@
 import { Router } from "express";
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import { esProveedor } from "../middlewares/validar-proveedor.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
+import {
+  validarStockProductos,
+  validarPropietarioPedido,
+  validarPedidoPendiente,
+  validarSoloAdmin,
+  validarCamposPedido
+} from "../middlewares/validar-pedidos.js";
 
 import {
   crearPedido,
-  actualizarEstadoProducto,
   obtenerPedidosUsuario,
-  obtenerPedidosProveedor,
   obtenerPedidoPorId,
   cancelarPedido,
-  listarTodosPedidos
+  listarTodosPedidos,
+  actualizarEstadoPedido
 } from "./pedidos.controller.js";
 
 const router = Router();
 
-// Públicas (pero requieren autenticación)
 router.post("/crear", [
-  validarJWT
+  validarJWT,
+  validarCamposPedido,
+  validarStockProductos
 ], crearPedido);
 
-router.get("/mis-pedidos", [
-  validarJWT
-], obtenerPedidosUsuario);
+router.get("/mis-pedidos", [validarJWT], obtenerPedidosUsuario);
 
 router.get("/:id", [
-  validarJWT
+  validarJWT,
+  validarPropietarioPedido
 ], obtenerPedidoPorId);
 
 router.put("/cancelar/:id", [
-  validarJWT
+  validarJWT,
+  validarPropietarioPedido,
+  validarPedidoPendiente
 ], cancelarPedido);
 
-// Rutas para proveedores
-router.get("/proveedor/mis-pedidos", [
-  validarJWT,
-  esProveedor
-], obtenerPedidosProveedor);
-
-router.put("/proveedor/actualizar-estado/:pedidoId/:nombreProducto", [
-  validarJWT,
-  esProveedor
-], actualizarEstadoProducto);
-
-// Rutas para administradores
 router.get("/admin/todos", [
   validarJWT,
-  tieneRole("APP_ADMIN")
+  validarSoloAdmin
 ], listarTodosPedidos);
+
+router.put("/admin/actualizar-estado/:id", [
+  validarJWT,
+  validarSoloAdmin
+], actualizarEstadoPedido);
 
 export default router;

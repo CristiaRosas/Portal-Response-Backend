@@ -22,11 +22,6 @@ const pedidoSchema = new Schema({
         type: Number,
         required: true,
       },
-      proveedor: {
-        type: Schema.Types.ObjectId,
-        ref: "Proveedor",
-        required: true,
-      },
       estado: {
         type: String,
         enum: ["pendiente", "confirmado", "en_preparacion", "en_camino", "entregado", "cancelado"],
@@ -40,7 +35,7 @@ const pedidoSchema = new Schema({
   ],
   estadoGeneral: {
     type: String,
-    enum: ["pendiente", "parcial", "completado", "cancelado"],
+    enum: ["pendiente", "completado", "cancelado"], 
     default: "pendiente",
   },
   total: {
@@ -74,23 +69,6 @@ const pedidoSchema = new Schema({
 }, {
   timestamps: true,
   versionKey: false,
-});
-
-// Middleware para actualizar estado general
-pedidoSchema.pre('save', function(next) {
-  const estados = this.productos.map(p => p.estado);
-  
-  if (estados.every(e => e === "entregado")) {
-    this.estadoGeneral = "completado";
-  } else if (estados.some(e => e !== "pendiente")) {
-    this.estadoGeneral = "parcial";
-  } else if (estados.every(e => e === "cancelado")) {
-    this.estadoGeneral = "cancelado";
-  } else {
-    this.estadoGeneral = "pendiente";
-  }
-  
-  next();
 });
 
 export default model("Pedido", pedidoSchema);
