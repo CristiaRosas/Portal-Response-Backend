@@ -2,15 +2,12 @@ import { Router } from "express";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
 import {
-  validarStockProductos,
   validarPropietarioPedido,
   validarPedidoPendiente,
-  validarSoloAdmin,
-  validarCamposPedido
+  validarSoloAdmin
 } from "../middlewares/validar-pedidos.js";
 
 import {
-  crearPedido,
   obtenerPedidosUsuario,
   obtenerPedidoPorId,
   cancelarPedido,
@@ -20,12 +17,7 @@ import {
 
 const router = Router();
 
-router.post("/crear", [
-  validarJWT,
-  validarCamposPedido,
-  validarStockProductos
-], crearPedido);
-
+// Usuarios normales
 router.get("/mis-pedidos", [validarJWT], obtenerPedidosUsuario);
 
 router.get("/:id", [
@@ -39,14 +31,15 @@ router.put("/cancelar/:id", [
   validarPedidoPendiente
 ], cancelarPedido);
 
+// Administrador
 router.get("/admin/todos", [
   validarJWT,
-  validarSoloAdmin
+  tieneRole("APP_ADMIN")
 ], listarTodosPedidos);
 
 router.put("/admin/actualizar-estado/:id", [
   validarJWT,
-  validarSoloAdmin
+  tieneRole("APP_ADMIN")
 ], actualizarEstadoPedido);
 
 export default router;

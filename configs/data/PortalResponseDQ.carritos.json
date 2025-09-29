@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "68daf670b210ad05a38ab135"
+  },
+  "usuario": {
+    "$oid": "68d1d59e4db89625c7da2ff1"
+  },
+  "productos": [
+    {
+      "producto": {
+        "$oid": "68d1c8daad7597374aa85b77"
+      },
+      "cantidad": 1,
+      "precioUnitario": 18.5,
+      "subtotal": 18.5,
+      "_id": {
+        "$oid": "68dafb2dc1174b5c2e3c0861"
+      }
+    }
+  ],
+  "total": 18.5,
+  "estado": "activo",
+  "createdAt": {
+    "$date": "2025-09-29T21:13:20.552Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-29T21:33:33.848Z"
+  }
+}]

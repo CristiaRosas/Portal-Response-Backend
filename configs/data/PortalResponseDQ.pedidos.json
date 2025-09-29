@@ -1,6 +1,6 @@
 [{
   "_id": {
-    "$oid": "68d1d6f64db89625c7da300a"
+    "$oid": "68daf6d3b210ad05a38ab180"
   },
   "usuario": {
     "$oid": "68d1d59e4db89625c7da2ff1"
@@ -12,178 +12,87 @@
       },
       "cantidad": 1,
       "precioUnitario": 18.5,
-      "estado": "cancelado",
       "_id": {
-        "$oid": "68d1d6f64db89625c7da300b"
-      },
-      "fechaActualizacion": {
-        "$date": "2025-09-22T23:08:38.948Z"
+        "$oid": "68daf6d3b210ad05a38ab181"
       }
     }
   ],
-  "estadoGeneral": "cancelado",
+  "estado": "entregado",
   "total": 18.5,
-  "direccionEntrega": "edificio ilumina",
-  "telefonoContacto": "+502 5434 0802",
-  "observaciones": "Por favor entregar antes de las 5pm",
+  "direccionEntrega": "10ma calle a 3-34 zona 7",
+  "telefonoContacto": "+50253274143",
+  "observaciones": "Entregar después de las 5pm",
   "historialEstados": [
     {
       "estado": "pendiente",
-      "observaciones": "Pedido creado por el usuario",
+      "observaciones": "Pedido creado desde carrito de compras",
       "cambiadoPor": {
         "$oid": "68d1d59e4db89625c7da2ff1"
       },
       "_id": {
-        "$oid": "68d1d6f64db89625c7da300c"
+        "$oid": "68daf6d3b210ad05a38ab182"
       },
       "fecha": {
-        "$date": "2025-09-22T23:08:38.956Z"
+        "$date": "2025-09-29T21:14:59.775Z"
       }
     },
     {
-      "estado": "cancelado",
-      "observaciones": "Pedido cancelado",
+      "estado": "Pedido actualizado: pendiente → en preparacion",
+      "observaciones": "Producto confirmado, en preparación",
       "cambiadoPor": {
-        "$oid": "68d1d59e4db89625c7da2ff1"
+        "$oid": "68daf61cb210ad05a38ab12a"
       },
       "_id": {
-        "$oid": "68d1da634db89625c7da3025"
+        "$oid": "68daf9bec5a7b87f2f84999d"
       },
       "fecha": {
-        "$date": "2025-09-22T23:23:15.450Z"
+        "$date": "2025-09-29T21:27:26.428Z"
+      }
+    },
+    {
+      "estado": "Pedido actualizado: en preparacion → entregado",
+      "observaciones": "Estado cambiado por: Cristian Rene",
+      "cambiadoPor": {
+        "$oid": "68daf61cb210ad05a38ab12a"
+      },
+      "_id": {
+        "$oid": "68dafad3c1174b5c2e3c0816"
+      },
+      "fecha": {
+        "$date": "2025-09-29T21:32:03.835Z"
+      }
+    },
+    {
+      "estado": "Pedido actualizado: entregado → en camino",
+      "observaciones": "Estado cambiado por: Cristian Rene",
+      "cambiadoPor": {
+        "$oid": "68daf61cb210ad05a38ab12a"
+      },
+      "_id": {
+        "$oid": "68dafaeac1174b5c2e3c082e"
+      },
+      "fecha": {
+        "$date": "2025-09-29T21:32:26.336Z"
+      }
+    },
+    {
+      "estado": "Pedido actualizado: en camino → entregado",
+      "observaciones": "Estado cambiado por: Cristian Rene",
+      "cambiadoPor": {
+        "$oid": "68daf61cb210ad05a38ab12a"
+      },
+      "_id": {
+        "$oid": "68dafb13c1174b5c2e3c0849"
+      },
+      "fecha": {
+        "$date": "2025-09-29T21:33:07.739Z"
       }
     }
   ],
   "createdAt": {
-    "$date": "2025-09-22T23:08:38.977Z"
+    "$date": "2025-09-29T21:14:59.785Z"
   },
   "updatedAt": {
-    "$date": "2025-09-22T23:23:15.460Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68d1dbfe03e1c3325e228d08"
-  },
-  "usuario": {
-    "$oid": "68d1d59e4db89625c7da2ff1"
-  },
-  "productos": [
-    {
-      "producto": {
-        "$oid": "68d1c8daad7597374aa85b77"
-      },
-      "cantidad": 5,
-      "precioUnitario": 18.5,
-      "estado": "cancelado",
-      "_id": {
-        "$oid": "68d1dbfe03e1c3325e228d09"
-      },
-      "fechaActualizacion": {
-        "$date": "2025-09-22T23:30:06.615Z"
-      }
-    }
-  ],
-  "estadoGeneral": "cancelado",
-  "total": 92.5,
-  "direccionEntrega": "edificio ilumina",
-  "telefonoContacto": "+502 5434 0802",
-  "observaciones": "Por favor entregar antes de las 5pm",
-  "historialEstados": [
-    {
-      "estado": "pendiente",
-      "observaciones": "Pedido creado por el usuario",
-      "cambiadoPor": {
-        "$oid": "68d1d59e4db89625c7da2ff1"
-      },
-      "_id": {
-        "$oid": "68d1dbfe03e1c3325e228d0a"
-      },
-      "fecha": {
-        "$date": "2025-09-22T23:30:06.622Z"
-      }
-    },
-    {
-      "estado": "cancelado",
-      "observaciones": "Pedido cancelado por el usuario: Comprador Prueba",
-      "cambiadoPor": {
-        "$oid": "68d1d59e4db89625c7da2ff1"
-      },
-      "_id": {
-        "$oid": "68d1dc2003e1c3325e228d26"
-      },
-      "fecha": {
-        "$date": "2025-09-22T23:30:40.697Z"
-      }
-    }
-  ],
-  "createdAt": {
-    "$date": "2025-09-22T23:30:06.633Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-22T23:30:40.708Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68d1dc5503e1c3325e228d33"
-  },
-  "usuario": {
-    "$oid": "68d1d59e4db89625c7da2ff1"
-  },
-  "productos": [
-    {
-      "producto": {
-        "$oid": "68d1c8daad7597374aa85b77"
-      },
-      "cantidad": 2,
-      "precioUnitario": 18.5,
-      "estado": "cancelado",
-      "_id": {
-        "$oid": "68d1dc5503e1c3325e228d34"
-      },
-      "fechaActualizacion": {
-        "$date": "2025-09-22T23:31:33.941Z"
-      }
-    }
-  ],
-  "estadoGeneral": "cancelado",
-  "total": 37,
-  "direccionEntrega": "edificio ilumina",
-  "telefonoContacto": "+502 5434 0802",
-  "observaciones": "Por favor entregar antes de las 5pm",
-  "historialEstados": [
-    {
-      "estado": "pendiente",
-      "observaciones": "Pedido creado por el usuario",
-      "cambiadoPor": {
-        "$oid": "68d1d59e4db89625c7da2ff1"
-      },
-      "_id": {
-        "$oid": "68d1dc5503e1c3325e228d35"
-      },
-      "fecha": {
-        "$date": "2025-09-22T23:31:33.942Z"
-      }
-    },
-    {
-      "estado": "cancelado",
-      "observaciones": "Pedido cancelado por el administrador: Cristian Rene",
-      "cambiadoPor": {
-        "$oid": "68d1c648ad7597374aa85b64"
-      },
-      "_id": {
-        "$oid": "68d1dc6d03e1c3325e228d49"
-      },
-      "fecha": {
-        "$date": "2025-09-22T23:31:57.971Z"
-      }
-    }
-  ],
-  "createdAt": {
-    "$date": "2025-09-22T23:31:33.946Z"
-  },
-  "updatedAt": {
-    "$date": "2025-09-22T23:31:57.974Z"
+    "$date": "2025-09-29T21:33:07.741Z"
   }
 }]

@@ -21,22 +21,15 @@ const pedidoSchema = new Schema({
       precioUnitario: {
         type: Number,
         required: true,
-      },
-      estado: {
-        type: String,
-        enum: ["pendiente", "confirmado", "en_preparacion", "en_camino", "entregado", "cancelado"],
-        default: "pendiente",
-      },
-      fechaActualizacion: {
-        type: Date,
-        default: Date.now,
       }
+      // ELIMINADO: estado individual de productos
     }
   ],
-  estadoGeneral: {
+  // Estados del PEDIDO COMPLETO (lo que ve el usuario)
+  estado: {
     type: String,
-    enum: ["pendiente", "completado", "cancelado"], 
-    default: "pendiente",
+    enum: ["pendiente", "confirmado", "en preparacion", "en camino", "entregado", "cancelado"],
+    default: "pendiente"
   },
   total: {
     type: Number,

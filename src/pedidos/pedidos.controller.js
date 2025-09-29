@@ -2,106 +2,6 @@ import Pedido from "./pedidos.model.js";
 import Producto from "../producto/producto.model.js";
 import User from "../users/user.model.js";
 
-export const crearPedido = async (req, res) => {
-  try {
-    const usuarioId = req.usuario._id;
-    const { productos, direccionEntrega, telefonoContacto, observaciones } = req.body;
-
-    if (!productos || productos.length === 0) {
-      return res.status(400).json({
-        success: false,
-        message: "Debe agregar al menos un producto al pedido"
-      });
-    }
-
-    let total = 0;
-    const productosConInfo = [];
-    const productosNoEncontrados = [];
-
-    for (const item of productos) {
-      const producto = await Producto.findOne({ 
-        nombre: { $regex: new RegExp(`^${item.nombre}$`, 'i') }
-      });
-
-      if (!producto) {
-        productosNoEncontrados.push(item.nombre);
-        continue;
-      }
-
-      if (producto.stock < item.cantidad) {
-        return res.status(400).json({
-          success: false,
-          message: `Stock insuficiente para: ${producto.nombre}. Disponible: ${producto.stock}`,
-          producto: producto.nombre,
-          stockDisponible: producto.stock
-        });
-      }
-
-      const subtotal = producto.precio * item.cantidad;
-      total += subtotal;
-
-      productosConInfo.push({
-        producto: producto._id,
-        cantidad: item.cantidad,
-        precioUnitario: producto.precio,
-        estado: "pendiente"
-      });
-
-      producto.stock -= item.cantidad;
-      await producto.save();
-    }
-
-    if (productosNoEncontrados.length > 0) {
-      const productosDisponibles = await Producto.find({ stock: { $gt: 0 } }, 'nombre precio stock');
-      
-      return res.status(404).json({
-        success: false,
-        message: "Algunos productos no fueron encontrados",
-        productosNoEncontrados,
-        productosDisponibles: productosDisponibles.map(p => ({
-          nombre: p.nombre,
-          precio: p.precio,
-          stock: p.stock
-        }))
-      });
-    }
-
-    const pedido = new Pedido({
-      usuario: usuarioId,
-      productos: productosConInfo,
-      total,
-      direccionEntrega,
-      telefonoContacto,
-      observaciones,
-      historialEstados: [{
-        estado: "pendiente",
-        observaciones: "Pedido creado por el usuario",
-        cambiadoPor: usuarioId
-      }]
-    });
-
-    await pedido.save();
-
-    const pedidoPopulado = await Pedido.findById(pedido._id)
-      .populate("usuario", "name surname email")
-      .populate("productos.producto", "nombre descripcion");
-
-    res.status(201).json({
-      success: true,
-      message: "Pedido creado exitosamente",
-      pedido: pedidoPopulado
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      success: false,
-      message: "Error al crear pedido",
-      error: error.message
-    });
-  }
-};
-
 export const obtenerPedidosUsuario = async (req, res) => {
   try {
     const usuarioId = req.usuario._id;
@@ -109,10 +9,26 @@ export const obtenerPedidosUsuario = async (req, res) => {
       .populate("productos.producto", "nombre descripcion")
       .sort({ createdAt: -1 });
 
+    // Formatear respuesta para mostrar el estado claramente
+    const pedidosFormateados = pedidos.map(pedido => ({
+      _id: pedido._id,
+      estado: pedido.estado,
+      estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
+      total: pedido.total,
+      fechaCreacion: pedido.createdAt,
+      productos: pedido.productos.map(item => ({
+        nombre: item.producto.nombre,
+        cantidad: item.cantidad,
+        precioUnitario: item.precioUnitario
+      })),
+      direccionEntrega: pedido.direccionEntrega,
+      historialReciente: pedido.historialEstados.slice(-3) // Últimos 3 estados
+    }));
+
     res.json({
       success: true,
       total: pedidos.length,
-      pedidos
+      pedidos: pedidosFormateados
     });
 
   } catch (error) {
@@ -130,7 +46,7 @@ export const obtenerPedidoPorId = async (req, res) => {
     const { id } = req.params;
     const pedido = await Pedido.findById(id)
       .populate("usuario", "name surname email telefono")
-      .populate("productos.producto", "nombre descripcion")
+      .populate("productos.producto", "nombre descripcion imagen")
       .populate("historialEstados.cambiadoPor", "name email role");
 
     if (!pedido) {
@@ -140,6 +56,7 @@ export const obtenerPedidoPorId = async (req, res) => {
       });
     }
 
+    // Verificar permisos
     const usuarioId = req.usuario._id;
     const esUsuarioPedido = pedido.usuario._id.toString() === usuarioId.toString();
     const esAdmin = req.usuario.role === "APP_ADMIN";
@@ -151,7 +68,37 @@ export const obtenerPedidoPorId = async (req, res) => {
       });
     }
 
-    res.json({ success: true, pedido });
+    // Formatear respuesta con información del seguimiento
+    const respuesta = {
+      success: true,
+      pedido: {
+        _id: pedido._id,
+        estado: pedido.estado,
+        estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
+        total: pedido.total,
+        fechaCreacion: pedido.createdAt,
+        direccionEntrega: pedido.direccionEntrega,
+        telefonoContacto: pedido.telefonoContacto,
+        observaciones: pedido.observaciones,
+        productos: pedido.productos.map(item => ({
+          producto: item.producto.nombre,
+          descripcion: item.producto.descripcion,
+          cantidad: item.cantidad,
+          precioUnitario: item.precioUnitario,
+          subtotal: item.cantidad * item.precioUnitario
+        })),
+        historialCompleto: pedido.historialEstados
+          .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+          .map(historial => ({
+            estado: historial.estado,
+            observaciones: historial.observaciones,
+            fecha: historial.fecha,
+            cambiadoPor: historial.cambiadoPor ? historial.cambiadoPor.name : 'Sistema'
+          }))
+      }
+    };
+
+    res.json(respuesta);
 
   } catch (error) {
     console.error(error);
@@ -183,6 +130,7 @@ export const cancelarPedido = async (req, res) => {
       });
     }
 
+    // Devolver stock de productos
     for (const item of pedido.productos) {
       if (item.producto) {
         const producto = await Producto.findById(item.producto._id);
@@ -193,11 +141,12 @@ export const cancelarPedido = async (req, res) => {
       }
     }
 
+    // Determinar quién canceló el pedido
     const canceladoPor = req.usuario.role === "APP_ADMIN" ? "administrador" : "usuario";
     const nombreCancelador = `${req.usuario.name} ${req.usuario.surname}`;
 
-    pedido.estadoGeneral = "cancelado";
-    pedido.productos.forEach(p => p.estado = "cancelado");
+    // Actualizar estado
+    pedido.estado = "cancelado";
     
     pedido.historialEstados.push({
       estado: "cancelado",
@@ -225,7 +174,8 @@ export const cancelarPedido = async (req, res) => {
       },
       pedido: {
         _id: pedidoActualizado._id,
-        estadoGeneral: pedidoActualizado.estadoGeneral,
+        estado: pedidoActualizado.estado,
+        estadoDescripcion: obtenerDescripcionEstado(pedidoActualizado.estado),
         usuario: {
           id: pedidoActualizado.usuario._id,
           nombre: `${pedidoActualizado.usuario.name} ${pedidoActualizado.usuario.surname}`,
@@ -233,8 +183,7 @@ export const cancelarPedido = async (req, res) => {
         },
         productos: pedidoActualizado.productos.map(p => ({
           producto: p.producto.nombre,
-          cantidad: p.cantidad,
-          estado: p.estado
+          cantidad: p.cantidad
         })),
         total: pedidoActualizado.total,
         historial: pedidoActualizado.historialEstados.slice(-1)[0] 
@@ -261,7 +210,7 @@ export const listarTodosPedidos = async (req, res) => {
     }
 
     const { limite = 50, desde = 0, estado } = req.query;
-    const query = estado ? { estadoGeneral: estado } : {};
+    const query = estado ? { estado: estado } : {};
 
     const pedidos = await Pedido.find(query)
       .populate("usuario", "name surname email")
@@ -272,7 +221,11 @@ export const listarTodosPedidos = async (req, res) => {
 
     const total = await Pedido.countDocuments(query);
 
-    res.json({ success: true, total, pedidos });
+    res.json({ 
+      success: true, 
+      total, 
+      pedidos 
+    });
 
   } catch (error) {
     console.error(error);
@@ -296,7 +249,18 @@ export const actualizarEstadoPedido = async (req, res) => {
     const { id } = req.params;
     const { estado, observaciones } = req.body;
 
-    const pedido = await Pedido.findById(id);
+    // Validar estado
+    const estadosPermitidos = ["pendiente", "confirmado", "en preparacion", "en camino", "entregado", "cancelado"];
+    if (!estadosPermitidos.includes(estado)) {
+      return res.status(400).json({
+        success: false,
+        message: `Estado no válido. Estados permitidos: ${estadosPermitidos.join(", ")}`
+      });
+    }
+
+    const pedido = await Pedido.findById(id)
+      .populate("usuario", "name surname email");
+
     if (!pedido) {
       return res.status(404).json({
         success: false,
@@ -304,15 +268,17 @@ export const actualizarEstadoPedido = async (req, res) => {
       });
     }
 
-    pedido.estadoGeneral = estado;
-    pedido.productos.forEach(p => p.estado = estado);
-    
+    // Guardar estado anterior para el historial
+    const estadoAnterior = pedido.estado;
+
+    // Actualizar estado del PEDIDO
+    pedido.estado = estado;
+
+    // Agregar al historial
     const nombreAdmin = `${req.usuario.name} ${req.usuario.surname}`;
-    const observacionesCompletas = observaciones || `Estado cambiado a: ${estado}`;
-    
     pedido.historialEstados.push({
-      estado: `Actualizado a: ${estado}`,
-      observaciones: `${observacionesCompletas} - Por: ${nombreAdmin}`,
+      estado: `Pedido actualizado: ${estadoAnterior} → ${estado}`,
+      observaciones: observaciones || `Estado cambiado por: ${nombreAdmin}`,
       cambiadoPor: req.usuario._id
     });
 
@@ -325,12 +291,12 @@ export const actualizarEstadoPedido = async (req, res) => {
 
     res.json({
       success: true,
-      message: `Estado del pedido actualizado a: ${estado}`,
-      detallesActualizacion: {
-        actualizadoPor: "administrador",
-        nombreAdmin: nombreAdmin,
-        idAdmin: req.usuario._id.toString(),
-        nuevoEstado: estado,
+      message: `Estado del pedido actualizado exitosamente`,
+      detalles: {
+        estadoAnterior: estadoAnterior,
+        estadoNuevo: estado,
+        estadoDescripcion: obtenerDescripcionEstado(estado),
+        actualizadoPor: nombreAdmin,
         fechaActualizacion: new Date().toISOString()
       },
       pedido: pedidoActualizado
@@ -344,4 +310,17 @@ export const actualizarEstadoPedido = async (req, res) => {
       error: error.message
     });
   }
+};
+
+// Helper para descripciones de estados
+const obtenerDescripcionEstado = (estado) => {
+  const descripciones = {
+    "pendiente": "Tu pedido está siendo procesado",
+    "confirmado": "Pedido confirmado y en preparación",
+    "en preparacion": "Tus productos están siendo empacados",
+    "en camino": "Tu pedido está en reparto",
+    "entregado": "Pedido entregado exitosamente",
+    "cancelado": "Pedido cancelado"
+  };
+  return descripciones[estado] || "Estado desconocido";
 };

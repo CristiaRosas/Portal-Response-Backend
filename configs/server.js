@@ -10,6 +10,7 @@
     import userRoutes from '../src/users/user.routes.js';
     import pedidoRoutes from '../src/pedidos/pedidos.routes.js';
     import categoriaRoutes from '../src/categoria/categoria.routes.js';
+    import carritoRoutes from '../src/carrito/carrito.routes.js';
 
     
     const middlewares = (app) => {
@@ -26,6 +27,7 @@
         app.use('/PortalResponseDQ/v1/users', userRoutes);
         app.use('/PortalResponseDQ/v1/pedidos', pedidoRoutes);
         app.use('/PortalResponseDQ/v1/categorias', categoriaRoutes);
+        app.use('/PortalResponseDQ/v1/carrito', carritoRoutes);
 
 
     }

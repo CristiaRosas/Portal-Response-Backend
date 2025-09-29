@@ -103,32 +103,25 @@ export const validarPropietarioPedido = async (req, res, next) => {
 export const validarPedidoPendiente = async (req, res, next) => {
   try {
     const { id } = req.params;
-    
     const pedido = await Pedido.findById(id);
+    
     if (!pedido) {
-      return res.status(404).json({
-        success: false,
-        message: "Pedido no encontrado"
-      });
+      return res.status(404).json({ message: "Pedido no encontrado" });
     }
 
-    if (pedido.estadoGeneral !== "pendiente") {
+    // Si el pedido está ENTREGADO, no se puede modificar
+    if (pedido.estado === "entregado") {
       return res.status(400).json({
         success: false,
-        message: `No se puede modificar un pedido en estado: ${pedido.estadoGeneral}`,
-        estadoActual: pedido.estadoGeneral,
-        accionesPermitidas: "Solo se pueden modificar pedidos en estado 'pendiente'"
+        message: "No se puede modificar un pedido ya entregado",
+        estadoActual: "entregado"
       });
     }
 
     req.pedido = pedido;
     next();
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Error validando estado del pedido",
-      error: error.message
-    });
+    res.status(500).json({ message: "Error validando pedido", error: error.message });
   }
 };
 

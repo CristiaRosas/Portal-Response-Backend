@@ -19,7 +19,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2MzkzMDMsImV4cCI6MTc1ODY1NzMwM30.XE_0kh4BU1L937JGCkD64IPT13ZZi5gdyZ_cD8WrI0k",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2NDQ2NjMsImV4cCI6MTc1ODY2MjY2M30.1ag0jHmatHGUi7gLLc2ICEynczIFcgR8eHmAY7jzJ7g",
 								"type": "text"
 							}
 						],
@@ -383,13 +383,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1Nzg4NzksImV4cCI6MTc1ODU5Njg3OX0.YJaVGGbngE6dQL11DDA2esd4vjs8KIBPlQKBvEwZnlo",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2NDYyNzcsImV4cCI6MTc1ODY2NDI3N30.bKSrSx2iXm96un1PtHdwLah7eeQqxNco4wy5kDQbOE8",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Tónicos\",\r\n  \"descripcion\": \"liquidos faciales\",\r\n  \"precio\": 65.50, \r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"Cuidado Facial\"\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Tratamientos capilares\",\r\n  \"descripcion\": \"productos capilares\",\r\n  \"precio\": 48.00, \r\n  \"stock\": 15,\r\n  \"categoriaNombre\": \"Cuidado Capilar\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -441,7 +441,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/categoria/cuidado facial",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/categoria/cuidado capilar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -452,7 +452,7 @@
 								"v1",
 								"productos",
 								"categoria",
-								"cuidado facial"
+								"cuidado capilar"
 							]
 						}
 					},
@@ -464,7 +464,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/buscar/68d1c8daad7597374aa85b77",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/buscar/68d1cf6c4db89625c7da2fd3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -475,7 +475,7 @@
 								"v1",
 								"productos",
 								"buscar",
-								"68d1c8daad7597374aa85b77"
+								"68d1cf6c4db89625c7da2fd3"
 							]
 						}
 					},
@@ -488,13 +488,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg1ODIzNTAsImV4cCI6MTc1ODYwMDM1MH0.VSDsW5OiqLxe7dOZ3sV8OGRcCsrmfNNPPdHb1d8c9BU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2NDYyNzcsImV4cCI6MTc1ODY2NDI3N30.bKSrSx2iXm96un1PtHdwLah7eeQqxNco4wy5kDQbOE8",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Shampoo\",\r\n  \"precio\": 18.50,\r\n  \"stock\": 25,\r\n  \"categoriaNombre\": \"cuidado Capilar\"\r\n}",
+							"raw": "{\r\n  \r\n  \"categoriaNombre\": \"cuidado Corporal\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -502,7 +502,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68d1c8daad7597374aa85b77",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68d2d0aca35d08a0667f2a4c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -513,7 +513,7 @@
 								"v1",
 								"productos",
 								"editar",
-								"68d1c8daad7597374aa85b77"
+								"68d2d0aca35d08a0667f2a4c"
 							]
 						}
 					},
@@ -552,6 +552,138 @@
 								"productos",
 								"eliminar",
 								"68d1c994ad7597374aa85b82"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Producto con imagen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg3Mjk4NjcsImV4cCI6MTc1ODc0Nzg2N30.wU-yi7ZpcoQfHzZy73NhYIRIGKc9DYUHHEzopr5hpI0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "shampoo pantene",
+									"type": "text"
+								},
+								{
+									"key": "descripcion",
+									"value": "Productos Capilares",
+									"type": "text"
+								},
+								{
+									"key": "precio",
+									"value": "20.00",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "25",
+									"type": "text"
+								},
+								{
+									"key": "categoriaNombre",
+									"value": "Cuidado Capilar",
+									"type": "text"
+								},
+								{
+									"key": "imagenes",
+									"type": "file",
+									"src": "/C:/Users/ramon/Desktop/prueba.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Imagen Producto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg3MzUyOTksImV4cCI6MTc1ODc1MzI5OX0.ER6SehOP0VqWzVggyxCBHqO2E8VtLILym410TyBlbao",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imagenes",
+									"type": "file",
+									"src": "/C:/Users/ramon/Desktop/Fotos Pruebas/shampoo pantene.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/editar/68d41cb40f08341134b871ae",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"editar",
+								"68d41cb40f08341134b871ae"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eiminar imagen producto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg3MzgwMTUsImV4cCI6MTc1ODc1NjAxNX0.5Buw4PwAVL4RwRtNKRz7Uq0mAUYD9onVfANJ7EkN_sA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/productos/eliminar-imagen/68d41cb40f08341134b871ae/68d41cb40f08341134b871af",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"productos",
+								"eliminar-imagen",
+								"68d41cb40f08341134b871ae",
+								"68d41cb40f08341134b871af"
 							]
 						}
 					},
@@ -741,50 +873,13 @@
 			"name": "Pedidos",
 			"item": [
 				{
-					"name": "Crear Pedido",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTg1ODIyMjEsImV4cCI6MTc1ODYwMDIyMX0.PbwvPJtz6RiM3z3AYyhmrO-W0jigsXXpUg1xFPNQFfc",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"productos\": [\r\n    {\r\n      \"nombre\": \"Shampoo\",\r\n      \"cantidad\": 2\r\n    }\r\n  ],\r\n  \"direccionEntrega\": \"edificio ilumina\",\r\n  \"telefonoContacto\": \"+502 5434 0802\",\r\n  \"observaciones\": \"Por favor entregar antes de las 5pm\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/crear",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"pedidos",
-								"crear"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Obtener mis pedidos",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTg2Mzk5NjYsImV4cCI6MTc1ODY1Nzk2Nn0.sjmpRg7afqgrdia7HaBd5nF8m-Ba4Z-f4u36vyxr30o",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODEyOTEsImV4cCI6MTc1OTE5OTI5MX0.2sLPdrBpi-nPTnMC4UaQHQ0NMxpLB8uwSslUz6z6rV0",
 								"type": "text"
 							}
 						],
@@ -812,7 +907,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2Mzk5MjgsImV4cCI6MTc1ODY1NzkyOH0._iEm6bgu_vVxE0sYuhDNSaJv6BIm50aVMeJSIv0cw5s",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhYzRlNjVkZmQ4MTllMTVhNzNlNTIiLCJpYXQiOjE3NTkxNjk0MTAsImV4cCI6MTc1OTE4NzQxMH0.6AVxtmBjQQajNfOGGLgWxaNkwmxRH0ar9S8BALgalFc",
 								"type": "text"
 							}
 						],
@@ -849,19 +944,19 @@
 					"response": []
 				},
 				{
-					"name": "actualizar estado producto / proveedor",
+					"name": "actualizar estado pedido",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGMxOTgyMGJmMDJjMzA4OGExNzBmNGIiLCJpYXQiOjE3NTg1NjYwMzQsImV4cCI6MTc1ODU4NDAzNH0.VefUKlz1feJe2GdCkHg99yvgPWZgq_VffoY_a_UZMcI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhZjYxY2IyMTBhZDA1YTM4YWIxMmEiLCJpYXQiOjE3NTkxODEyNDAsImV4cCI6MTc1OTE5OTI0MH0.ijUgdSqDQ1cbwFjipsDM8QkD9nnXnpJ4VJrZMldiGbA",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"estado\": \"confirmado\",\r\n  \"observaciones\": \"Producto confirmado, en preparación\"\r\n}",
+							"raw": "{\r\n  \"estado\": \"entregado\"\r\n  \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -869,7 +964,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/actualizar-estado/",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/actualizar-estado/68daf6d3b210ad05a38ab180",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -881,36 +976,7 @@
 								"pedidos",
 								"admin",
 								"actualizar-estado",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ver todos los pedidos / solo admin",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxYzY0OGFkNzU5NzM3NGFhODViNjQiLCJpYXQiOjE3NTg2Mzk5MjgsImV4cCI6MTc1ODY1NzkyOH0._iEm6bgu_vVxE0sYuhDNSaJv6BIm50aVMeJSIv0cw5s",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/todos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"PortalResponseDQ",
-								"v1",
-								"pedidos",
-								"admin",
-								"todos"
+								"68daf6d3b210ad05a38ab180"
 							]
 						}
 					},
@@ -940,6 +1006,248 @@
 								"pedidos",
 								"cancelar",
 								"68d1dc5503e1c3325e228d33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ver progreso pedido ADMIN",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhYzRlNjVkZmQ4MTllMTVhNzNlNTIiLCJpYXQiOjE3NTkxNzc0MzYsImV4cCI6MTc1OTE5NTQzNn0.vPui6vEs-jo1Vi0_vfeao62fioAarQw2YhBkYO2Kz3M",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/progreso/68daca81fec938d50e6bb933",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"admin",
+								"progreso",
+								"68daca81fec938d50e6bb933"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrito",
+			"item": [
+				{
+					"name": "Agregar al carrito",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODAzODQsImV4cCI6MTc1OTE5ODM4NH0.vPBu_Gsyh3ujvDw1kjIP5dQRSf-gLrcKc2xshrYgCOI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreProducto\": \"Shampoo\",\r\n  \"cantidad\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Carrito",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODAzODQsImV4cCI6MTc1OTE5ODM4NH0.vPBu_Gsyh3ujvDw1kjIP5dQRSf-gLrcKc2xshrYgCOI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar Cantidad",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreProducto\": \"Shampoo\",\r\n  \"cantidad\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/actualizar-cantidad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito",
+								"actualizar-cantidad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar del carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreProducto\": \"Body Milk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/eliminar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito",
+								"eliminar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vaciar carrito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreProducto\": \"Body Milk\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/vaciar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito",
+								"vaciar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar Compra",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"direccionEntrega\": \"10ma calle a 3-34 zona 7\",\r\n  \"telefonoContacto\": \"+50253274143\",\r\n  \"observaciones\": \"Entregar después de las 5pm\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/confirmar-compra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"carrito",
+								"confirmar-compra"
 							]
 						}
 					},
