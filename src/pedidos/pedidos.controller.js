@@ -12,6 +12,7 @@ export const obtenerPedidosUsuario = async (req, res) => {
     // Formatear respuesta para mostrar el estado claramente
     const pedidosFormateados = pedidos.map(pedido => ({
       _id: pedido._id,
+      codigoSeguimiento: pedido.codigoSeguimiento,
       estado: pedido.estado,
       estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
       total: pedido.total,
@@ -73,6 +74,7 @@ export const obtenerPedidoPorId = async (req, res) => {
       success: true,
       pedido: {
         _id: pedido._id,
+        codigoSeguimiento: pedido.codigoSeguimiento,
         estado: pedido.estado,
         estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
         total: pedido.total,
@@ -174,6 +176,7 @@ export const cancelarPedido = async (req, res) => {
       },
       pedido: {
         _id: pedidoActualizado._id,
+        codigoSeguimiento: pedidoActualizado.codigoSeguimiento,
         estado: pedidoActualizado.estado,
         estadoDescripcion: obtenerDescripcionEstado(pedidoActualizado.estado),
         usuario: {
@@ -307,6 +310,109 @@ export const actualizarEstadoPedido = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Error al actualizar estado del pedido",
+      error: error.message
+    });
+  }
+};
+
+// Rastrear pedido público (sin autenticación)
+export const rastrearPedido = async (req, res) => {
+  try {
+    const { codigo } = req.params;
+
+    if (!codigo) {
+      return res.status(400).json({
+        success: false,
+        message: "Código de seguimiento requerido"
+      });
+    }
+
+    // Buscar pedido por código de seguimiento
+    const pedido = await Pedido.findOne({ codigoSeguimiento: codigo.toUpperCase() })
+      .populate("usuario", "name surname")
+      .populate("productos.producto", "nombre descripcion imagen")
+      .populate("historialEstados.cambiadoPor", "name");
+
+    if (!pedido) {
+      return res.status(404).json({
+        success: false,
+        message: "Pedido no encontrado",
+        sugerencia: "Verifica que el código de seguimiento sea correcto"
+      });
+    }
+
+    // Formatear respuesta para rastreo público (sin información sensible)
+    const respuesta = {
+      success: true,
+      pedido: {
+        codigoSeguimiento: pedido.codigoSeguimiento,
+        estado: pedido.estado,
+        estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
+        fechaCreacion: pedido.createdAt,
+        ultimaActualizacion: pedido.updatedAt,
+        // Información limitada para protección de datos
+        productos: pedido.productos.map(item => ({
+          nombre: item.producto.nombre,
+          cantidad: item.cantidad
+        })),
+        totalProductos: pedido.productos.length,
+        total: pedido.total,
+        // Historial formateado para el cliente
+        historial: pedido.historialEstados
+          .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
+          .map(historial => ({
+            estado: historial.estado,
+            observaciones: historial.observaciones,
+            fecha: historial.fecha,
+            cambiadoPor: historial.cambiadoPor ? 'Sistema' : 'Sistema' // No mostrar nombres reales
+          }))
+      },
+      mensaje: `Pedido ${pedido.codigoSeguimiento} encontrado`
+    };
+
+    res.json(respuesta);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error al rastrear pedido",
+      error: error.message
+    });
+  }
+};
+
+// Obtener código de seguimiento para un pedido (usuario autenticado)
+export const obtenerCodigoSeguimiento = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const usuarioId = req.usuario._id;
+
+    const pedido = await Pedido.findOne({ 
+      _id: id, 
+      usuario: usuarioId 
+    }).select("codigoSeguimiento estado");
+
+    if (!pedido) {
+      return res.status(404).json({
+        success: false,
+        message: "Pedido no encontrado o no tienes permisos"
+      });
+    }
+
+    res.json({
+      success: true,
+      codigoSeguimiento: pedido.codigoSeguimiento,
+      estado: pedido.estado,
+      enlaceRastreo: `${req.protocol}://${req.get('host')}/PortalResponseDQ/v1/pedidos/rastrear/${pedido.codigoSeguimiento}`,
+      mensaje: "Usa este código para rastrear tu pedido sin iniciar sesión"
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error al obtener código de seguimiento",
       error: error.message
     });
   }

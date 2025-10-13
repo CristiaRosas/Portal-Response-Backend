@@ -879,7 +879,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODEyOTEsImV4cCI6MTc1OTE5OTI5MX0.2sLPdrBpi-nPTnMC4UaQHQ0NMxpLB8uwSslUz6z6rV0",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAxMjA0MzgsImV4cCI6MTc2MDEzODQzOH0.e1zeCZ4MvmAy34hZ1aejVSKb1YV9GfraIxaAAF1kHMk",
 								"type": "text"
 							}
 						],
@@ -1040,6 +1040,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Rastrear pedido publico",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODAzODQsImV4cCI6MTc1OTE5ODM4NH0.vPBu_Gsyh3ujvDw1kjIP5dQRSf-gLrcKc2xshrYgCOI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/rastrear/TRKWYMJOMP",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"PortalResponseDQ",
+								"v1",
+								"pedidos",
+								"rastrear",
+								"TRKWYMJOMP"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1053,7 +1082,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODAzODQsImV4cCI6MTc1OTE5ODM4NH0.vPBu_Gsyh3ujvDw1kjIP5dQRSf-gLrcKc2xshrYgCOI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNjYwNTksImV4cCI6MTc2MDM4NDA1OX0.WCmyJSs1LcERM1q9-8Usstpo9XNGPTeC5J1lsVVcjqE",
 								"type": "text"
 							}
 						],
@@ -1090,7 +1119,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxODAzODQsImV4cCI6MTc1OTE5ODM4NH0.vPBu_Gsyh3ujvDw1kjIP5dQRSf-gLrcKc2xshrYgCOI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAxMjI4NzAsImV4cCI6MTc2MDE0MDg3MH0.thZTectk1dIREsU_Lxdl5ll2N5rEM0P1sgSJNkZvk1c",
 								"type": "text"
 							}
 						],
@@ -1191,13 +1220,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAxMjI4NzAsImV4cCI6MTc2MDE0MDg3MH0.thZTectk1dIREsU_Lxdl5ll2N5rEM0P1sgSJNkZvk1c",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombreProducto\": \"Body Milk\"\r\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "http://localhost:3000/PortalResponseDQ/v1/carrito/vaciar",
@@ -1223,13 +1252,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NTkxNjgxMDgsImV4cCI6MTc1OTE4NjEwOH0.xWoo51fmNzbNl5mYrAW32iDAjDsPhA4i8C6g28ir0Js",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNjYwNTksImV4cCI6MTc2MDM4NDA1OX0.WCmyJSs1LcERM1q9-8Usstpo9XNGPTeC5J1lsVVcjqE",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"direccionEntrega\": \"10ma calle a 3-34 zona 7\",\r\n  \"telefonoContacto\": \"+50253274143\",\r\n  \"observaciones\": \"Entregar después de las 5pm\"\r\n}",
+							"raw": "{\r\n  \"direccionEntrega\": \"Calle Principal #123, Ciudad\",\r\n  \"telefonoContacto\": \"+1234567890\",\r\n  \"observaciones\": \"Entregar después de las 5pm\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

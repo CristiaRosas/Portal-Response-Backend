@@ -3,8 +3,7 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 import { tieneRole } from "../middlewares/validar-roles.js";
 import {
   validarPropietarioPedido,
-  validarPedidoPendiente,
-  validarSoloAdmin
+  validarPedidoPendiente
 } from "../middlewares/validar-pedidos.js";
 
 import {
@@ -12,10 +11,13 @@ import {
   obtenerPedidoPorId,
   cancelarPedido,
   listarTodosPedidos,
-  actualizarEstadoPedido
+  actualizarEstadoPedido,
+  rastrearPedido,
+  obtenerCodigoSeguimiento
 } from "./pedidos.controller.js";
 
 const router = Router();
+router.get("/rastrear/:codigo", rastrearPedido);
 
 // Usuarios normales
 router.get("/mis-pedidos", [validarJWT], obtenerPedidosUsuario);

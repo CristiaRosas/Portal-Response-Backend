@@ -22,10 +22,17 @@ const pedidoSchema = new Schema({
         type: Number,
         required: true,
       }
-      // ELIMINADO: estado individual de productos
     }
   ],
-  // Estados del PEDIDO COMPLETO (lo que ve el usuario)
+  // Corregido: hacerlo requerido pero con valor por defecto
+  codigoSeguimiento: {
+    type: String,
+    unique: true,
+    required: true,
+    default: function() {
+      return generarCodigoSeguimiento();
+    }
+  },
   estado: {
     type: String,
     enum: ["pendiente", "confirmado", "en preparacion", "en camino", "entregado", "cancelado"],
@@ -63,5 +70,15 @@ const pedidoSchema = new Schema({
   timestamps: true,
   versionKey: false,
 });
+
+// Función para generar código de seguimiento único
+function generarCodigoSeguimiento() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = 'TRK';
+  for (let i = 0; i < 7; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
 
 export default model("Pedido", pedidoSchema);
