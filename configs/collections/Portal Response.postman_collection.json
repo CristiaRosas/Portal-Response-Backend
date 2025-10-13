@@ -879,7 +879,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAxMjA0MzgsImV4cCI6MTc2MDEzODQzOH0.e1zeCZ4MvmAy34hZ1aejVSKb1YV9GfraIxaAAF1kHMk",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNzUyMDIsImV4cCI6MTc2MDM5MzIwMn0.nMLorf7ta4-wkKGu3K4M1T-_yhwwweW2QJmEH50RQ7g",
 								"type": "text"
 							}
 						],
@@ -907,7 +907,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhYzRlNjVkZmQ4MTllMTVhNzNlNTIiLCJpYXQiOjE3NTkxNjk0MTAsImV4cCI6MTc1OTE4NzQxMH0.6AVxtmBjQQajNfOGGLgWxaNkwmxRH0ar9S8BALgalFc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhZjYxY2IyMTBhZDA1YTM4YWIxMmEiLCJpYXQiOjE3NjAxMjA0MDYsImV4cCI6MTc2MDEzODQwNn0.CYce5EKCrm2Nt7QiejheJcR8s3b_eB6zTe8IEy5rB4M",
 								"type": "text"
 							}
 						],
@@ -950,13 +950,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhZjYxY2IyMTBhZDA1YTM4YWIxMmEiLCJpYXQiOjE3NTkxODEyNDAsImV4cCI6MTc1OTE5OTI0MH0.ijUgdSqDQ1cbwFjipsDM8QkD9nnXnpJ4VJrZMldiGbA",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGRhZjYxY2IyMTBhZDA1YTM4YWIxMmEiLCJpYXQiOjE3NjAzNzU0MTAsImV4cCI6MTc2MDM5MzQxMH0.4eUwyL0-B6je2YPDxvgVkYH3jeOjiY4T5hKXGOf4X30",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"estado\": \"entregado\"\r\n  \r\n}",
+							"raw": "{\r\n  \"estado\": \"cancelado\",\r\n  \"emailNotificacion\": \"crisrene.rosas@gmail.com\",\r\n  \"observaciones\": \"Tu pedido salió hoy\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -964,7 +964,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/actualizar-estado/68daf6d3b210ad05a38ab180",
+							"raw": "http://localhost:3000/PortalResponseDQ/v1/pedidos/admin/actualizar-estado/68ed336ef3bc5f1780f37d57",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -976,7 +976,7 @@
 								"pedidos",
 								"admin",
 								"actualizar-estado",
-								"68daf6d3b210ad05a38ab180"
+								"68ed336ef3bc5f1780f37d57"
 							]
 						}
 					},
@@ -1082,7 +1082,7 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNjYwNTksImV4cCI6MTc2MDM4NDA1OX0.WCmyJSs1LcERM1q9-8Usstpo9XNGPTeC5J1lsVVcjqE",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNzUyMDIsImV4cCI6MTc2MDM5MzIwMn0.nMLorf7ta4-wkKGu3K4M1T-_yhwwweW2QJmEH50RQ7g",
 								"type": "text"
 							}
 						],
@@ -1252,13 +1252,13 @@
 						"header": [
 							{
 								"key": "x-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNjYwNTksImV4cCI6MTc2MDM4NDA1OX0.WCmyJSs1LcERM1q9-8Usstpo9XNGPTeC5J1lsVVcjqE",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2OGQxZDU5ZTRkYjg5NjI1YzdkYTJmZjEiLCJpYXQiOjE3NjAzNzUyMDIsImV4cCI6MTc2MDM5MzIwMn0.nMLorf7ta4-wkKGu3K4M1T-_yhwwweW2QJmEH50RQ7g",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"direccionEntrega\": \"Calle Principal #123, Ciudad\",\r\n  \"telefonoContacto\": \"+1234567890\",\r\n  \"observaciones\": \"Entregar después de las 5pm\"\r\n}",
+							"raw": "{\r\n  \"direccionEntrega\": \"Calle Principal 123\",\r\n  \"telefonoContacto\": \"123456789\",\r\n  \"emailNotificacion\": \"crisrene.rosas@gmail.com\",\r\n  \"observaciones\": \"Entregar en recepción\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

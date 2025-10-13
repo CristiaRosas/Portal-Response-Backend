@@ -1,6 +1,7 @@
 import Carrito from "./carrito.model.js";
 import Producto from "../producto/producto.model.js";
 import Pedido from "../pedidos/pedidos.model.js";
+import { enviarEmailNotificacion } from "../services/email.service.js";
 
 // Obtener carrito del usuario
 export const obtenerCarrito = async (req, res) => {
@@ -303,13 +304,22 @@ export const vaciarCarrito = async (req, res) => {
 export const confirmarCompra = async (req, res) => {
   try {
     const usuarioId = req.usuario._id;
-    const { direccionEntrega, telefonoContacto, observaciones } = req.body;
+    const { direccionEntrega, telefonoContacto, observaciones, emailNotificacion } = req.body;
 
     // Validar campos requeridos
-    if (!direccionEntrega || !telefonoContacto) {
+    if (!direccionEntrega || !telefonoContacto || !emailNotificacion) {
       return res.status(400).json({
         success: false,
-        message: "Dirección de entrega y teléfono de contacto son requeridos"
+        message: "Dirección de entrega, teléfono de contacto y email de notificación son requeridos"
+      });
+    }
+
+    // Validar formato de email
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailRegex.test(emailNotificacion)) {
+      return res.status(400).json({
+        success: false,
+        message: "Por favor ingresa un email válido para las notificaciones"
       });
     }
 
@@ -349,12 +359,11 @@ export const confirmarCompra = async (req, res) => {
       });
     }
 
-    // Crear pedido
+    // Crear pedido (sin modificar el modelo)
     const productosPedido = carrito.productos.map(item => ({
       producto: item.producto._id,
       cantidad: item.cantidad,
-      precioUnitario: item.precioUnitario,
-      estado: "pendiente"
+      precioUnitario: item.precioUnitario
     }));
 
     const pedido = new Pedido({
@@ -380,6 +389,22 @@ export const confirmarCompra = async (req, res) => {
 
     await pedido.save();
 
+    // ✅ ENVIAR EMAIL DE CONFIRMACIÓN usando el email proporcionado
+    try {
+      const usuarioInfo = {
+        name: req.usuario.name,
+        surname: req.usuario.surname,
+        email: req.usuario.email // Email del usuario registrado
+      };
+      
+      await enviarEmailNotificacion(pedido, usuarioInfo, "pendiente", emailNotificacion);
+      
+      console.log(`✅ Email de confirmación enviado a: ${emailNotificacion}`);
+    } catch (emailError) {
+      console.error('❌ Error enviando email de confirmación:', emailError);
+      // No fallar la operación principal si el email falla
+    }
+
     // Vaciar carrito después de confirmar compra
     carrito.productos = [];
     carrito.total = 0;
@@ -393,6 +418,11 @@ export const confirmarCompra = async (req, res) => {
       success: true,
       message: "Compra confirmada exitosamente",
       pedido: pedidoPopulado,
+      notificacion: {
+        emailEnviado: true,
+        destino: emailNotificacion,
+        mensaje: "Se ha enviado un email de confirmación a tu correo"
+      },
       carritoActualizado: {
         productos: [],
         total: 0,

@@ -1,6 +1,7 @@
 import Pedido from "./pedidos.model.js";
 import Producto from "../producto/producto.model.js";
 import User from "../users/user.model.js";
+import { enviarEmailNotificacion } from "../services/email.service.js";
 
 export const obtenerPedidosUsuario = async (req, res) => {
   try {
@@ -116,8 +117,12 @@ export const cancelarPedido = async (req, res) => {
   try {
     const { id } = req.params;
     const usuarioId = req.usuario._id;
+    const { emailNotificacion } = req.body;
 
-    const pedido = await Pedido.findById(id).populate("productos.producto", "nombre stock");
+    const pedido = await Pedido.findById(id)
+      .populate("productos.producto", "nombre stock")
+      .populate("usuario", "name surname email");
+
     if (!pedido) {
       return res.status(404).json({
         success: false,
@@ -125,7 +130,7 @@ export const cancelarPedido = async (req, res) => {
       });
     }
 
-    if (pedido.usuario.toString() !== usuarioId.toString() && req.usuario.role !== "APP_ADMIN") {
+    if (pedido.usuario._id.toString() !== usuarioId.toString() && req.usuario.role !== "APP_ADMIN") {
       return res.status(403).json({
         success: false,
         message: "Solo puedes cancelar tus propios pedidos"
@@ -146,17 +151,35 @@ export const cancelarPedido = async (req, res) => {
     // Determinar quién canceló el pedido
     const canceladoPor = req.usuario.role === "APP_ADMIN" ? "administrador" : "usuario";
     const nombreCancelador = `${req.usuario.name} ${req.usuario.surname}`;
+    const observacionesCancelacion = `Pedido cancelado por el ${canceladoPor}: ${nombreCancelador}`;
 
     // Actualizar estado
     pedido.estado = "cancelado";
     
     pedido.historialEstados.push({
       estado: "cancelado",
-      observaciones: `Pedido cancelado por el ${canceladoPor}: ${nombreCancelador}`,
+      observaciones: observacionesCancelacion,
       cambiadoPor: usuarioId
     });
 
     await pedido.save();
+
+    // ✅ ENVIAR EMAIL DE CANCELACIÓN si se proporcionó un email
+    if (emailNotificacion) {
+      try {
+        const usuarioInfo = {
+          name: pedido.usuario.name,
+          surname: pedido.usuario.surname,
+          email: pedido.usuario.email
+        };
+
+        await enviarEmailNotificacion(pedido, usuarioInfo, "cancelado", emailNotificacion, observacionesCancelacion);
+        
+        console.log(`✅ Email de cancelación enviado a: ${emailNotificacion}`);
+      } catch (emailError) {
+        console.error('❌ Error enviando email de cancelación:', emailError);
+      }
+    }
 
     const pedidoActualizado = await Pedido.findById(id)
       .populate("usuario", "name surname email")
@@ -172,7 +195,8 @@ export const cancelarPedido = async (req, res) => {
         idCancelador: usuarioId.toString(),
         rolCancelador: req.usuario.role,
         fechaCancelacion: new Date().toISOString(),
-        pedidoId: id
+        pedidoId: id,
+        notificacionEmail: emailNotificacion ? `Notificación enviada a: ${emailNotificacion}` : "No se envió notificación por email"
       },
       pedido: {
         _id: pedidoActualizado._id,
@@ -250,7 +274,7 @@ export const actualizarEstadoPedido = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { estado, observaciones } = req.body;
+    const { estado, observaciones, emailNotificacion } = req.body;
 
     // Validar estado
     const estadosPermitidos = ["pendiente", "confirmado", "en preparacion", "en camino", "entregado", "cancelado"];
@@ -259,6 +283,17 @@ export const actualizarEstadoPedido = async (req, res) => {
         success: false,
         message: `Estado no válido. Estados permitidos: ${estadosPermitidos.join(", ")}`
       });
+    }
+
+    // Validar email si se proporciona
+    if (emailNotificacion) {
+      const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      if (!emailRegex.test(emailNotificacion)) {
+        return res.status(400).json({
+          success: false,
+          message: "Por favor ingresa un email válido para las notificaciones"
+        });
+      }
     }
 
     const pedido = await Pedido.findById(id)
@@ -279,6 +314,7 @@ export const actualizarEstadoPedido = async (req, res) => {
 
     // Agregar al historial
     const nombreAdmin = `${req.usuario.name} ${req.usuario.surname}`;
+    
     pedido.historialEstados.push({
       estado: `Pedido actualizado: ${estadoAnterior} → ${estado}`,
       observaciones: observaciones || `Estado cambiado por: ${nombreAdmin}`,
@@ -286,6 +322,23 @@ export const actualizarEstadoPedido = async (req, res) => {
     });
 
     await pedido.save();
+
+    // ✅ ENVIAR EMAIL DE NOTIFICACIÓN si se proporcionó un email
+    if (emailNotificacion) {
+      try {
+        const usuarioInfo = {
+          name: pedido.usuario.name,
+          surname: pedido.usuario.surname,
+          email: pedido.usuario.email
+        };
+
+        await enviarEmailNotificacion(pedido, usuarioInfo, estado, emailNotificacion, observaciones);
+        
+        console.log(`✅ Email de actualización enviado a: ${emailNotificacion}`);
+      } catch (emailError) {
+        console.error('❌ Error enviando email de notificación:', emailError);
+      }
+    }
 
     const pedidoActualizado = await Pedido.findById(id)
       .populate("usuario", "name surname email")
@@ -300,7 +353,8 @@ export const actualizarEstadoPedido = async (req, res) => {
         estadoNuevo: estado,
         estadoDescripcion: obtenerDescripcionEstado(estado),
         actualizadoPor: nombreAdmin,
-        fechaActualizacion: new Date().toISOString()
+        fechaActualizacion: new Date().toISOString(),
+        notificacionEmail: emailNotificacion ? `Notificación enviada a: ${emailNotificacion}` : "No se envió notificación por email"
       },
       pedido: pedidoActualizado
     });
