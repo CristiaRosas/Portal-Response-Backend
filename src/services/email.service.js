@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 
-// Configurar el transporter de nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -9,7 +8,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Plantillas de email
 const plantillasEmail = {
   pendiente: (pedido, usuario, emailDestino) => ({
     subject: `✅ Pedido Confirmado - ${pedido.codigoSeguimiento}`,
@@ -21,7 +19,7 @@ const plantillasEmail = {
         
         <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
           <h3 style="margin-top: 0;">Resumen del pedido:</h3>
-          <p><strong>Total:</strong> $${pedido.total}</p>
+          <p><strong>Total:</strong> Q.${pedido.total}</p>
           <p><strong>Dirección de entrega:</strong> ${pedido.direccionEntrega}</p>
           <p><strong>Teléfono de contacto:</strong> ${pedido.telefonoContacto}</p>
         </div>
@@ -111,27 +109,35 @@ const plantillasEmail = {
     `,
   }),
 
-  cancelado: (pedido, usuario, emailDestino, observaciones = "") => ({
-    subject: `❌ Pedido Cancelado - ${pedido.codigoSeguimiento}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #dc2626;">Pedido cancelado</h2>
-        <p>Hola <strong>${usuario.name} ${usuario.surname}</strong>,</p>
-        <p>Tu pedido <strong>${pedido.codigoSeguimiento}</strong> ha sido cancelado.</p>
-        
-        <div style="background: #fef2f2; padding: 15px; border-radius: 8px; margin: 20px 0;">
-          <h3 style="margin-top: 0;">Información:</h3>
-          <p><strong>Razón:</strong> ${observaciones || "Cancelación solicitada"}</p>
-          <p><strong>Total reembolsado:</strong> $${pedido.total}</p>
-          <p><strong>Fecha de cancelación:</strong> ${new Date().toLocaleDateString()}</p>
-        </div>
-        <p style="color: #6b7280; font-size: 14px;">Notificaciones enviadas a: ${emailDestino}</p>
+  cancelado: (pedido, usuario, emailDestino, razonCancelacion = "") => ({
+  subject: `❌ Pedido Cancelado - ${pedido.codigoSeguimiento}`,
+  html: `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #dc2626;">Pedido cancelado</h2>
+      <p>Hola <strong>${usuario.name} ${usuario.surname}</strong>,</p>
+      <p>Tu pedido <strong>${pedido.codigoSeguimiento}</strong> ha sido cancelado.</p>
+      
+      <div style="background: #fef2f2; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="margin-top: 0;">Información de cancelación:</h3>
+        <p><strong>Razón de cancelación:</strong> ${razonCancelacion || "No se especificó razón"}</p>
+        <p><strong>Total del pedido:</strong> Q.${pedido.total}</p>
+        <p><strong>Fecha de cancelación:</strong> ${new Date().toLocaleDateString()}</p>
+        <p><strong>Código de seguimiento:</strong> ${pedido.codigoSeguimiento}</p>
       </div>
-    `,
-  }),
+
+      <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="margin-top: 0;">¿Qué pasa ahora?</h4>
+        <p>• El importe será reembolsado en un plazo de 3-5 días hábiles</p>
+        <p>• El stock de los productos ha sido restaurado</p>
+        <p>• Si tienes dudas, contacta con nuestro servicio al cliente</p>
+      </div>
+      
+      <p style="color: #6b7280; font-size: 14px;">Notificaciones enviadas a: ${emailDestino}</p>
+    </div>
+  `,
+}),
 };
 
-// Función para enviar email de notificación
 export const enviarEmailNotificacion = async (pedido, usuario, estado, emailDestino, observaciones = "") => {
   try {
     const plantilla = plantillasEmail[estado];
@@ -159,7 +165,6 @@ export const enviarEmailNotificacion = async (pedido, usuario, estado, emailDest
   }
 };
 
-// Verificar configuración del email
 export const verificarConfiguracionEmail = async () => {
   try {
     await transporter.verify();

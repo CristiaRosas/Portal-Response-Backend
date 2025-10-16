@@ -10,7 +10,6 @@ export const obtenerPedidosUsuario = async (req, res) => {
       .populate("productos.producto", "nombre descripcion")
       .sort({ createdAt: -1 });
 
-    // Formatear respuesta para mostrar el estado claramente
     const pedidosFormateados = pedidos.map(pedido => ({
       _id: pedido._id,
       codigoSeguimiento: pedido.codigoSeguimiento,
@@ -24,7 +23,7 @@ export const obtenerPedidosUsuario = async (req, res) => {
         precioUnitario: item.precioUnitario
       })),
       direccionEntrega: pedido.direccionEntrega,
-      historialReciente: pedido.historialEstados.slice(-3) // Últimos 3 estados
+      historialReciente: pedido.historialEstados.slice(-3) 
     }));
 
     res.json({
@@ -58,7 +57,6 @@ export const obtenerPedidoPorId = async (req, res) => {
       });
     }
 
-    // Verificar permisos
     const usuarioId = req.usuario._id;
     const esUsuarioPedido = pedido.usuario._id.toString() === usuarioId.toString();
     const esAdmin = req.usuario.role === "APP_ADMIN";
@@ -70,7 +68,6 @@ export const obtenerPedidoPorId = async (req, res) => {
       });
     }
 
-    // Formatear respuesta con información del seguimiento
     const respuesta = {
       success: true,
       pedido: {
@@ -117,7 +114,15 @@ export const cancelarPedido = async (req, res) => {
   try {
     const { id } = req.params;
     const usuarioId = req.usuario._id;
-    const { emailNotificacion } = req.body;
+    const { razonCancelacion, emailNotificacion } = req.body;
+
+    // Validar que se proporcione la razón de cancelación
+    if (!razonCancelacion) {
+      return res.status(400).json({
+        success: false,
+        message: "La razón de cancelación es requerida"
+      });
+    }
 
     const pedido = await Pedido.findById(id)
       .populate("productos.producto", "nombre stock")
@@ -151,7 +156,7 @@ export const cancelarPedido = async (req, res) => {
     // Determinar quién canceló el pedido
     const canceladoPor = req.usuario.role === "APP_ADMIN" ? "administrador" : "usuario";
     const nombreCancelador = `${req.usuario.name} ${req.usuario.surname}`;
-    const observacionesCancelacion = `Pedido cancelado por el ${canceladoPor}: ${nombreCancelador}`;
+    const observacionesCancelacion = `Pedido cancelado por el ${canceladoPor}: ${nombreCancelador}. Razón: ${razonCancelacion}`;
 
     // Actualizar estado
     pedido.estado = "cancelado";
@@ -173,7 +178,7 @@ export const cancelarPedido = async (req, res) => {
           email: pedido.usuario.email
         };
 
-        await enviarEmailNotificacion(pedido, usuarioInfo, "cancelado", emailNotificacion, observacionesCancelacion);
+        await enviarEmailNotificacion(pedido, usuarioInfo, "cancelado", emailNotificacion, razonCancelacion);
         
         console.log(`✅ Email de cancelación enviado a: ${emailNotificacion}`);
       } catch (emailError) {
@@ -192,6 +197,7 @@ export const cancelarPedido = async (req, res) => {
       detallesCancelacion: {
         canceladoPor: canceladoPor,
         nombreCancelador: nombreCancelador,
+        razonCancelacion: razonCancelacion,
         idCancelador: usuarioId.toString(),
         rolCancelador: req.usuario.role,
         fechaCancelacion: new Date().toISOString(),
@@ -213,6 +219,7 @@ export const cancelarPedido = async (req, res) => {
           cantidad: p.cantidad
         })),
         total: pedidoActualizado.total,
+        razonCancelacion: razonCancelacion,
         historial: pedidoActualizado.historialEstados.slice(-1)[0] 
       }
     });
@@ -226,7 +233,6 @@ export const cancelarPedido = async (req, res) => {
     });
   }
 };
-
 export const listarTodosPedidos = async (req, res) => {
   try {
     if (req.usuario.role !== "APP_ADMIN") {
@@ -274,7 +280,7 @@ export const actualizarEstadoPedido = async (req, res) => {
     }
 
     const { id } = req.params;
-    const { estado, observaciones, emailNotificacion } = req.body;
+    const { estado, observaciones, emailNotificacion, razonCancelacion } = req.body;
 
     // Validar estado
     const estadosPermitidos = ["pendiente", "confirmado", "en preparacion", "en camino", "entregado", "cancelado"];
@@ -282,6 +288,14 @@ export const actualizarEstadoPedido = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: `Estado no válido. Estados permitidos: ${estadosPermitidos.join(", ")}`
+      });
+    }
+
+    // Si es cancelación, requerir razón
+    if (estado === "cancelado" && !razonCancelacion) {
+      return res.status(400).json({
+        success: false,
+        message: "La razón de cancelación es requerida para cancelar un pedido"
       });
     }
 
@@ -309,15 +323,31 @@ export const actualizarEstadoPedido = async (req, res) => {
     // Guardar estado anterior para el historial
     const estadoAnterior = pedido.estado;
 
+    // Si se cancela, devolver stock
+    if (estado === "cancelado" && estadoAnterior !== "cancelado") {
+      for (const item of pedido.productos) {
+        if (item.producto) {
+          const producto = await Producto.findById(item.producto._id);
+          if (producto) {
+            producto.stock += item.cantidad;
+            await producto.save();
+          }
+        }
+      }
+    }
+
     // Actualizar estado del PEDIDO
     pedido.estado = estado;
 
     // Agregar al historial
     const nombreAdmin = `${req.usuario.name} ${req.usuario.surname}`;
+    const observacionesCompletas = estado === "cancelado" 
+      ? `${observaciones || `Estado cambiado por: ${nombreAdmin}`}. Razón: ${razonCancelacion}`
+      : observaciones || `Estado cambiado por: ${nombreAdmin}`;
     
     pedido.historialEstados.push({
       estado: `Pedido actualizado: ${estadoAnterior} → ${estado}`,
-      observaciones: observaciones || `Estado cambiado por: ${nombreAdmin}`,
+      observaciones: observacionesCompletas,
       cambiadoPor: req.usuario._id
     });
 
@@ -332,7 +362,8 @@ export const actualizarEstadoPedido = async (req, res) => {
           email: pedido.usuario.email
         };
 
-        await enviarEmailNotificacion(pedido, usuarioInfo, estado, emailNotificacion, observaciones);
+        const razonParaEmail = estado === "cancelado" ? razonCancelacion : observaciones;
+        await enviarEmailNotificacion(pedido, usuarioInfo, estado, emailNotificacion, razonParaEmail);
         
         console.log(`✅ Email de actualización enviado a: ${emailNotificacion}`);
       } catch (emailError) {
@@ -354,6 +385,7 @@ export const actualizarEstadoPedido = async (req, res) => {
         estadoDescripcion: obtenerDescripcionEstado(estado),
         actualizadoPor: nombreAdmin,
         fechaActualizacion: new Date().toISOString(),
+        razonCancelacion: estado === "cancelado" ? razonCancelacion : undefined,
         notificacionEmail: emailNotificacion ? `Notificación enviada a: ${emailNotificacion}` : "No se envió notificación por email"
       },
       pedido: pedidoActualizado
@@ -395,7 +427,7 @@ export const rastrearPedido = async (req, res) => {
       });
     }
 
-    // Formatear respuesta para rastreo público (sin información sensible)
+  
     const respuesta = {
       success: true,
       pedido: {
@@ -404,21 +436,19 @@ export const rastrearPedido = async (req, res) => {
         estadoDescripcion: obtenerDescripcionEstado(pedido.estado),
         fechaCreacion: pedido.createdAt,
         ultimaActualizacion: pedido.updatedAt,
-        // Información limitada para protección de datos
         productos: pedido.productos.map(item => ({
           nombre: item.producto.nombre,
           cantidad: item.cantidad
         })),
         totalProductos: pedido.productos.length,
         total: pedido.total,
-        // Historial formateado para el cliente
         historial: pedido.historialEstados
           .sort((a, b) => new Date(b.fecha) - new Date(a.fecha))
           .map(historial => ({
             estado: historial.estado,
             observaciones: historial.observaciones,
             fecha: historial.fecha,
-            cambiadoPor: historial.cambiadoPor ? 'Sistema' : 'Sistema' // No mostrar nombres reales
+            cambiadoPor: historial.cambiadoPor ? 'Sistema' : 'Sistema' 
           }))
       },
       mensaje: `Pedido ${pedido.codigoSeguimiento} encontrado`
@@ -436,7 +466,7 @@ export const rastrearPedido = async (req, res) => {
   }
 };
 
-// Obtener código de seguimiento para un pedido (usuario autenticado)
+
 export const obtenerCodigoSeguimiento = async (req, res) => {
   try {
     const { id } = req.params;
@@ -472,7 +502,7 @@ export const obtenerCodigoSeguimiento = async (req, res) => {
   }
 };
 
-// Helper para descripciones de estados
+
 const obtenerDescripcionEstado = (estado) => {
   const descripciones = {
     "pendiente": "Tu pedido está siendo procesado",

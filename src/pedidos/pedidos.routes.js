@@ -19,7 +19,6 @@ import {
 const router = Router();
 router.get("/rastrear/:codigo", rastrearPedido);
 
-// Usuarios normales
 router.get("/mis-pedidos", [validarJWT], obtenerPedidosUsuario);
 
 router.get("/:id", [
@@ -33,7 +32,6 @@ router.put("/cancelar/:id", [
   validarPedidoPendiente
 ], cancelarPedido);
 
-// Administrador
 router.get("/admin/todos", [
   validarJWT,
   tieneRole("APP_ADMIN")

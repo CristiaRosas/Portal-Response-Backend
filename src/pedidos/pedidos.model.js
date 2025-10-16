@@ -24,7 +24,6 @@ const pedidoSchema = new Schema({
       }
     }
   ],
-  // Corregido: hacerlo requerido pero con valor por defecto
   codigoSeguimiento: {
     type: String,
     unique: true,
@@ -71,7 +70,6 @@ const pedidoSchema = new Schema({
   versionKey: false,
 });
 
-// Función para generar código de seguimiento único
 function generarCodigoSeguimiento() {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = 'TRK';

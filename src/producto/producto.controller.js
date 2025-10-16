@@ -93,7 +93,7 @@ export const editarProducto = async (req, res) => {
     const { id } = req.params;
     const { nombre, descripcion, precio, stock, categoriaNombre } = req.body;
 
-    // Validar que el producto exista
+
     const productoExistente = await Producto.findById(id);
     if (!productoExistente) {
       return res.status(404).json({
@@ -104,7 +104,7 @@ export const editarProducto = async (req, res) => {
 
     const updateData = { nombre, descripcion, precio, stock };
 
-    // Validar números positivos si se proporcionan
+
     if (precio !== undefined && precio <= 0) {
       return res.status(400).json({
         success: false,
@@ -119,7 +119,6 @@ export const editarProducto = async (req, res) => {
       });
     }
 
-    // Si se proporciona categoría, buscarla
     if (categoriaNombre) {
       const categoria = await Categoria.findOne({
         nombre: { $regex: new RegExp(`^${categoriaNombre}$`, 'i') },
@@ -137,7 +136,6 @@ export const editarProducto = async (req, res) => {
       updateData.categoria = categoria._id;
     }
 
-    // Verificar si el nuevo nombre ya existe (excluyendo el producto actual)
     if (nombre) {
       const productoConMismoNombre = await Producto.findOne({
         nombre: { $regex: new RegExp(`^${nombre}$`, 'i') },
